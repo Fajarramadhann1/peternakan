@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('ayam', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('stok_ayam');
+            $table->string('harga_ayam');
+            $table->string('kategori_ayam');
+            $table->string('nama_kandang');
         });
     }
 
