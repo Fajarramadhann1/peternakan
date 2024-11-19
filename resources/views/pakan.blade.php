@@ -137,6 +137,25 @@
             100% { transform: scale(1.1); }
         }
 
+        /* Tombol tambah merk pakan baru */
+        .add-button {
+            background-color: #f6a600;
+            color: white;
+            border: none;
+            padding: 10px 10px; /* Ubah padding untuk memperkecil tombol */
+            margin-left: 10px; /* Jarak antara input dan tombol */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px; /* Ukuran font lebih kecil */
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .add-button:hover {
+            background-color: #db9b00;
+            transform: scale(1.05);
+        }
+
         .post-list {
             margin-top: 30px;
             padding: 30px;
@@ -239,26 +258,17 @@
         <div class="nav-links">
             <a href="/">Home</a>
             <a href="/ayam">Ayam</a>
-            <a href="/jual">Penjualan</a>
+            <a href="/penjualan">Penjualan</a>
         </div>
     </div>
 
     <div class="post-container">
-        <h2>Silahkan Edit Data Pakan</h2>
+        <h2>DATA PAKAN</h2>
         <form action="/create-post" method="POST">
             @csrf
             <label for="pakan">Merk Pakan:</label>
             <select name="pakan" id="pakan" required>
-                <option value="Japfa Comfeed">Japfa Comfeed</option>
-                <option value="Charoen Pokphand">Charoen Pokphand</option>
-                <option value="Malindo Feedmill">Malindo Feedmill</option>
-                <option value="Sierad Produce">Sierad Produce</option>
-                <option value="New Hope">New Hope</option>
-                <option value="Wonokoyo">Wonokoyo</option>
-                <option value="Gold Coin">Gold Coin</option>
-                <option value="Feedmill Inti Prima">Feedmill Inti Prima</option>
-                <option value="Sentra Profeed">Sentra Profeed</option>
-                <option value="CJ Feed">CJ Feed</option>
+                <option value="">Pilih Merk Pakan</option>
                 <option value="Prima Feedmill">Prima Feedmill</option>
                 <option value="Cargill Feed">Cargill Feed</option>
                 <option value="Bisi International">Bisi International</option>
@@ -270,6 +280,13 @@
                 <option value="Gofeed">Gofeed</option>
                 <option value="Greenfields Feed">Greenfields Feed</option>
             </select>
+
+            <!-- Input untuk menambahkan merk pakan baru -->
+            <div>
+                <label for="new-pakan">Tambah Merk Pakan Baru:</label>
+                <input type="text" id="new-pakan" placeholder="Nama merk pakan baru">
+                <button type="button" class="add-button" onclick="addNewPakan()">Tambah Merk</button>
+            </div>
 
             <label for="stok">Tambah Stok:</label>
             <input type="number" name="stok" id="stok" min="1" max="100" placeholder="Tambahkan stok (1-100)" required>
@@ -305,5 +322,33 @@
             @endforeach
         </div>
     </div>
+
+    <script>
+        // Fungsi JavaScript untuk menambahkan merk pakan baru ke dropdown
+        function addNewPakan() {
+            const newPakan = document.getElementById('new-pakan').value.trim();
+            const select = document.getElementById('pakan');
+
+            if (newPakan) {
+                // Cek jika merk pakan baru sudah ada di dropdown
+                for (let option of select.options) {
+                    if (option.value.toLowerCase() === newPakan.toLowerCase()) {
+                        alert('Merk pakan ini sudah ada!');
+                        return;
+                    }
+                }
+
+                // Menambah merk pakan baru ke dropdown
+                const option = document.createElement('option');
+                option.value = newPakan;
+                option.textContent = newPakan;
+                select.appendChild(option);
+                select.value = newPakan; // Pilih otomatis merk pakan yang baru ditambahkan
+                document.getElementById('new-pakan').value = ''; // Reset input field
+            } else {
+                alert('Silahkan masukkan nama merk pakan baru');
+            }
+        }
+    </script>
 </body>
 </html>
