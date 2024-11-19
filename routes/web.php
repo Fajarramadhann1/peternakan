@@ -2,10 +2,12 @@
 
 use App\Models\Ayam;
 use App\Models\Post;
+use App\Models\Pakan;
 use App\Models\Penjualan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AyamController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PenjualanController;
 
 Route::get('/', function () {
@@ -36,10 +38,10 @@ Route::put('/edit-penjualan/{penjualan}', [PenjualanController::class, 'actually
 Route::delete('/delete-penjualan/{penjualan}', [PenjualanController::class, 'deletePenjualan']);
 
 Route::get('/pakan', function () {
-    $posts = Post::all(); // Menampilkan semua artikel yang telah
-    return view('pakan', ['posts' => $posts]); // Pastikan 'about' adalah nama view yang benar
+    $pakans = Pakan::all(); // Menampilkan semua artikel yang telah
+    return view('pakan', ['pakans' => $pakans]); // Pastikan 'about' adalah nama view yang benar
 });
-Route::post('/create-post', [PostController::class, 'createPost']);
-Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
-Route::put('/edit-post/{post}', [PostController::class, 'actuallyUpdatePost']);
-Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+Route::post('/create-post', [PakanController::class, 'createPakan']);
+Route::get('/edit-post/{post}', [PakanController::class, 'showEditScreen']);
+Route::put('/edit-post/{post}', [PakanController::class, 'actuallyUpdatePakan']);
+Route::delete('/delete-post/{post}', [PakanController::class, 'deletePakan']);

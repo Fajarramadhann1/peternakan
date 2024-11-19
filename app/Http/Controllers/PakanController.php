@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post; // Ensure you import the Post model
+use App\Models\Pakan; // Ensure you import the Post model
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PakanController extends Controller
 {
     // Menampilkan halaman dengan data yang tersimpan
     public function index()
     {
-        $posts = Post::all(); // Get all post data from the database
-        return view('halaman_pakan', ['posts' => $posts]); // Ensure the view name matches
+        $pakans = Pakan::all(); // Get all post data from the database
+        return view('halaman_pakan', ['posts' => $pakans]); // Ensure the view name matches
     }
 
     // Menambahkan post baru
@@ -24,7 +24,7 @@ public function createPost(Request $request)
         'harga' => 'required|integer|min:1000|max:500000', // Validasi harga
     ]);
 
-    Post::create([
+    Pakan::create([
         'title' => $incomingField['pakan'],
         'body' => 'Stok: ' . $incomingField['stok'],
         'harga' => $incomingField['harga'], // Simpan harga ke database
@@ -35,7 +35,7 @@ public function createPost(Request $request)
 }
 
 // Mengupdate post yang ada
-public function actuallyUpdatePost(Post $post, Request $request)
+public function actuallyUpdatePost(Pakan $pakan, Request $request)
 {
     $incomingField = $request->validate([
         'title' => 'required|string',
@@ -43,7 +43,7 @@ public function actuallyUpdatePost(Post $post, Request $request)
         'harga' => 'required|integer|min:1000|max:500000', // Validasi harga
     ]);
 
-    $post->update([
+    $pakan->update([
         'title' => $incomingField['title'],
         'body' => $incomingField['body'],
         'harga' => $incomingField['harga'], // Update harga
@@ -52,15 +52,15 @@ public function actuallyUpdatePost(Post $post, Request $request)
     return redirect('/pakan');
 }
 
-public function deletePost(Post $post)
+public function deletePost(Pakan $pakan)
     {
-        $post->delete();
+        $pakan->delete();
         return redirect('/pakan'); // Redirect after deletion
     }
 
     // Menampilkan layar edit
-    public function showEditScreen(Post $post)
+    public function showEditScreen(Pakan $pakan)
     {
-        return view('edit-post', ['post' => $post]);
+        return view('edit-post', ['post' => $pakan]);
     }
 }
