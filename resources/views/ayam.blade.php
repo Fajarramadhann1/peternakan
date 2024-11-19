@@ -188,7 +188,7 @@
         <div class="nav-links">
             <a href="/">Home</a>
             <a href="/pakan">Pakan</a>
-            <a href="/jual">Penjualan</a>
+            <a href="/penjualan">Penjualan</a>
         </div>
     </div>
 
