@@ -303,16 +303,16 @@
 
         <div class="post-list">
             <h2>Data Yang Tersimpan</h2>
-            @foreach ($posts as $post)
+            @foreach ($pakans as $pakan)
             <div class="post">
-                <h3>{{ $post['title'] }}</h3>
-                <p>{{ $post['body'] }}</p>
-                <p>Harga Pakan: Rp {{ number_format($post['harga'], 0, ',', '.') }}</p>
-                <p><span>Tanggal Ditambahkan:</span> {{ \Carbon\Carbon::parse($post['created_at'])->format('d-m-Y') }}</p>
+                <h3>{{ $pakan['title'] }}</h3>
+                <p>{{ $pakan['body'] }}</p>
+                <p>Harga Pakan: Rp {{ number_format($pakan['harga'], 0, ',', '.') }}</p>
+                <p><span>Tanggal Ditambahkan:</span> {{ \Carbon\Carbon::parse($pakan['created_at'])->format('d-m-Y') }}</p>
 
                 <div class="post-actions">
-                    <a href="/edit-post/{{ $post->id }}">Edit</a>
-                    <form class="delete-post" action="/delete-post/{{ $post->id }}" method="POST" onsubmit="return confirm('Tekan Oke Jika Data Ingin Di Hapus')">
+                    <a href="/edit-post/{{ $pakan->id }}">Edit</a>
+                    <form class="delete-post" action="/delete-post/{{ $pakan->id }}" method="POST" onsubmit="return confirm('Tekan Oke Jika Data Ingin Di Hapus')">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Hapus</button>
