@@ -311,8 +311,8 @@
                 <p><span>Tanggal Ditambahkan:</span> {{ \Carbon\Carbon::parse($pakan['created_at'])->format('d-m-Y') }}</p>
 
                 <div class="post-actions">
-                    <a href="/edit-post/{{ $pakan->id }}">Edit</a>
-                    <form class="delete-post" action="/delete-post/{{ $pakan->id }}" method="POST" onsubmit="return confirm('Tekan Oke Jika Data Ingin Di Hapus')">
+                    <a href="/edit-pakan/{{ $pakan->id }}">Edit</a>
+                    <form class="delete-pakan" action="/delete-pakan/{{ $pakan->id }}" method="POST" onsubmit="return confirm('Tekan Oke Jika Data Ingin Di Hapus')">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Hapus</button>

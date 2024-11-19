@@ -139,48 +139,48 @@
     </div>
 
     <div class="edit-container">
-        <form action="/edit-post/{{ $post->id }}" method="POST">
+        <form action="/edit-pakan/{{ $pakan->id }}" method="POST">
             @csrf
             @method('PUT')
-
             <!-- Dropdown untuk memilih jenis pakan -->
-            <label for="pakan">Merk Pakan:</label>
-            <select name="title" id="pakan" required>
-                <option value="Japfa Comfeed" {{ $post->title == 'Japfa Comfeed' ? 'selected' : '' }}>Japfa Comfeed</option>
-                <option value="Charoen Pokphand" {{ $post->title == 'Charoen Pokphand' ? 'selected' : '' }}>Charoen Pokphand</option>
-                <option value="Malindo Feedmill" {{ $post->title == 'Malindo Feedmill' ? 'selected' : '' }}>Malindo Feedmill</option>
-                <option value="Sierad Produce" {{ $post->title == 'Sierad Produce' ? 'selected' : '' }}>Sierad Produce</option>
-                <option value="New Hope" {{ $post->title == 'New Hope' ? 'selected' : '' }}>New Hope</option>
-                <option value="Wonokoyo" {{ $post->title == 'Wonokoyo' ? 'selected' : '' }}>Wonokoyo</option>
-                <option value="Gold Coin" {{ $post->title == 'Gold Coin' ? 'selected' : '' }}>Gold Coin</option>
-                <option value="Feedmill Inti Prima" {{ $post->title == 'Feedmill Inti Prima' ? 'selected' : '' }}>Feedmill Inti Prima</option>
-                <option value="Sentra Profeed" {{ $post->title == 'Sentra Profeed' ? 'selected' : '' }}>Sentra Profeed</option>
-                <option value="CJ Feed" {{ $post->title == 'CJ Feed' ? 'selected' : '' }}>CJ Feed</option>
-                <option value="Prima Feedmill" {{ $post->title == 'Prima Feedmill' ? 'selected' : '' }}>Prima Feedmill</option>
-                <option value="Cargill Feed" {{ $post->title == 'Cargill Feed' ? 'selected' : '' }}>Cargill Feed</option>
-                <option value="Bisi International" {{ $post->title == 'Bisi International' ? 'selected' : '' }}>Bisi International</option>
-                <option value="Lautan Luas" {{ $post->title == 'Lautan Luas' ? 'selected' : '' }}>Lautan Luas</option>
-                <option value="Sinta Prima Feedmill" {{ $post->title == 'Sinta Prima Feedmill' ? 'selected' : '' }}>Sinta Prima Feedmill</option>
-                <option value="Trouw Nutrition" {{ $post->title == 'Trouw Nutrition' ? 'selected' : '' }}>Trouw Nutrition</option>
-                <option value="Patriot Feed" {{ $post->title == 'Patriot Feed' ? 'selected' : '' }}>Patriot Feed</option>
-                <option value="Eka Farm" {{ $post->title == 'Eka Farm' ? 'selected' : '' }}>Eka Farm</option>
-                <option value="JGofeed" {{ $post->title == 'JGofeed' ? 'selected' : '' }}>JGofeed</option>
-                <option value="Greenfields Feed" {{ $post->title == 'Greenfields Feed' ? 'selected' : '' }}>Greenfields Feed</option>
-            </select>
+<label for="pakan">Merk Pakan:</label>
+<select name="title" id="pakan" required>
+    <option value="Japfa Comfeed" {{ $pakan->title == 'Japfa Comfeed' ? 'selected' : '' }}>Japfa Comfeed</option>
+    <option value="Charoen Pokphand" {{ $pakan->title == 'Charoen Pokphand' ? 'selected' : '' }}>Charoen Pokphand</option>
+    <option value="Malindo Feedmill" {{ $pakan->title == 'Malindo Feedmill' ? 'selected' : '' }}>Malindo Feedmill</option>
+    <option value="Sierad Produce" {{ $pakan->title == 'Sierad Produce' ? 'selected' : '' }}>Sierad Produce</option>
+    <option value="New Hope" {{ $pakan->title == 'New Hope' ? 'selected' : '' }}>New Hope</option>
+    <option value="Wonokoyo" {{ $pakan->title == 'Wonokoyo' ? 'selected' : '' }}>Wonokoyo</option>
+    <option value="Gold Coin" {{ $pakan->title == 'Gold Coin' ? 'selected' : '' }}>Gold Coin</option>
+    <option value="Feedmill Inti Prima" {{ $pakan->title == 'Feedmill Inti Prima' ? 'selected' : '' }}>Feedmill Inti Prima</option>
+    <option value="Sentra Profeed" {{ $pakan->title == 'Sentra Profeed' ? 'selected' : '' }}>Sentra Profeed</option>
+    <option value="CJ Feed" {{ $pakan->title == 'CJ Feed' ? 'selected' : '' }}>CJ Feed</option>
+    <option value="Prima Feedmill" {{ $pakan->title == 'Prima Feedmill' ? 'selected' : '' }}>Prima Feedmill</option>
+    <option value="Cargill Feed" {{ $pakan->title == 'Cargill Feed' ? 'selected' : '' }}>Cargill Feed</option>
+    <option value="Bisi International" {{ $pakan->title == 'Bisi International' ? 'selected' : '' }}>Bisi International</option>
+    <option value="Lautan Luas" {{ $pakan->title == 'Lautan Luas' ? 'selected' : '' }}>Lautan Luas</option>
+    <option value="Sinta Prima Feedmill" {{ $pakan->title == 'Sinta Prima Feedmill' ? 'selected' : '' }}>Sinta Prima Feedmill</option>
+    <option value="Trouw Nutrition" {{ $pakan->title == 'Trouw Nutrition' ? 'selected' : '' }}>Trouw Nutrition</option>
+    <option value="Patriot Feed" {{ $pakan->title == 'Patriot Feed' ? 'selected' : '' }}>Patriot Feed</option>
+    <option value="Eka Farm" {{ $pakan->title == 'Eka Farm' ? 'selected' : '' }}>Eka Farm</option>
+    <option value="JGofeed" {{ $pakan->title == 'JGofeed' ? 'selected' : '' }}>JGofeed</option>
+    <option value="Greenfields Feed" {{ $pakan->title == 'Greenfields Feed' ? 'selected' : '' }}>Greenfields Feed</option>
+</select>
 
-            <!-- Form untuk mengedit stok -->
-            <label for="stok">Stok Pakan:</label>
-            <input type="number" name="body" id="stok" min="1" max="100" value="{{ preg_replace('/[^0-9]/', '', $post->body) }}" required placeholder="Tambahkan stok (1-100)">
+<!-- Form untuk mengedit stok -->
+<label for="stok">Stok Pakan:</label>
+<input type="number" name="body" id="stok" min="1" max="100" value="{{ preg_replace('/[^0-9]/', '', $pakan->body) }}" required placeholder="Tambahkan stok (1-100)">
 
-            <!-- Dropdown untuk mengedit harga pakan -->
-            <label for="harga">Harga Pakan:</label>
-            <select name="harga" id="harga" required>
-                @for($i = 1000; $i <= 500000; $i += 1000)
-                    <option value="{{ $i }}" {{ $post->harga == $i ? 'selected' : '' }}>Rp {{ number_format($i, 0, ',', '.') }}</option>
-                @endfor
-            </select>
+<!-- Dropdown untuk mengedit harga pakan -->
+<label for="harga">Harga Pakan:</label>
+<select name="harga" id="harga" required>
+    @for($i = 1000; $i <= 500000; $i += 1000)
+        <option value="{{ $i }}" {{ $pakan->harga == $i ? 'selected' : '' }}>Rp {{ number_format($i, 0, ',', '.') }}</option>
+    @endfor
+</select>
 
-            <button type="submit">Save Changes</button>
+<button type="submit">Save Changes</button>
+
         </form>
     </div>
 </body>

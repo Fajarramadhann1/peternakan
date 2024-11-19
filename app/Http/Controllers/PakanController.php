@@ -11,12 +11,12 @@ class PakanController extends Controller
     public function index()
     {
         $pakans = Pakan::all(); // Get all post data from the database
-        return view('halaman_pakan', ['posts' => $pakans]); // Ensure the view name matches
+        return view('halaman_pakan', ['pakans' => $pakans]); // Ensure the view name matches
     }
 
     // Menambahkan post baru
     // Menambahkan post baru
-public function createPost(Request $request)
+public function createPakan(Request $request)
 {
     $incomingField = $request->validate([
         'pakan' => 'required|string',
@@ -35,7 +35,7 @@ public function createPost(Request $request)
 }
 
 // Mengupdate post yang ada
-public function actuallyUpdatePost(Pakan $pakan, Request $request)
+public function actuallyUpdatePakan(Pakan $pakan, Request $request)
 {
     $incomingField = $request->validate([
         'title' => 'required|string',
@@ -52,7 +52,7 @@ public function actuallyUpdatePost(Pakan $pakan, Request $request)
     return redirect('/pakan');
 }
 
-public function deletePost(Pakan $pakan)
+public function deletePakan(Pakan $pakan)
     {
         $pakan->delete();
         return redirect('/pakan'); // Redirect after deletion
@@ -61,6 +61,6 @@ public function deletePost(Pakan $pakan)
     // Menampilkan layar edit
     public function showEditScreen(Pakan $pakan)
     {
-        return view('edit-post', ['post' => $pakan]);
+        return view('edit-pakan', ['pakan' => $pakan]);
     }
 }

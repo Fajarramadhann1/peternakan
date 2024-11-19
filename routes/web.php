@@ -41,7 +41,7 @@ Route::get('/pakan', function () {
     $pakans = Pakan::all(); // Menampilkan semua artikel yang telah
     return view('pakan', ['pakans' => $pakans]); // Pastikan 'about' adalah nama view yang benar
 });
-Route::post('/create-post', [PakanController::class, 'createPakan']);
-Route::get('/edit-post/{post}', [PakanController::class, 'showEditScreen']);
-Route::put('/edit-post/{post}', [PakanController::class, 'actuallyUpdatePakan']);
-Route::delete('/delete-post/{post}', [PakanController::class, 'deletePakan']);
+Route::post('/create-pakan', [PakanController::class, 'createPakan']);
+Route::get('/edit-pakan/{pakan}', [PakanController::class, 'showEditScreen']);
+Route::put('/edit-pakan/{pakan}', [PakanController::class, 'actuallyUpdatePakan']);
+Route::delete('/delete-pakan/{pakan}', [PakanController::class, 'deletePakan']);
