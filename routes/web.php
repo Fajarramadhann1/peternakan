@@ -7,6 +7,7 @@ use App\Models\Penjualan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AyamController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PenjualanController;
 
@@ -45,3 +46,14 @@ Route::post('/create-pakan', [PakanController::class, 'createPakan']);
 Route::get('/edit-pakan/{pakan}', [PakanController::class, 'showEditScreen']);
 Route::put('/edit-pakan/{pakan}', [PakanController::class, 'actuallyUpdatePakan']);
 Route::delete('/delete-pakan/{pakan}', [PakanController::class, 'deletePakan']);
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/login', [UserController::class, 'login']);
