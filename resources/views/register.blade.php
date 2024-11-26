@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Halaman Register</title>
+    <title>Sistem Manajemen Peternakan</title>
     <style>
         /* General styles for the body */
         body {
@@ -82,6 +82,23 @@
             background-color: #db9b00;
         }
 
+        /* Additional link styles */
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            color: #f6a600;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .login-link a:hover {
+            color: #db9b00;
+        }
+
         /* Footer styles */
         .footer {
             background-color: #f6a600;
@@ -97,7 +114,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Halaman Register</h1>
+        <h1>Sistem Manajemen Peternakan</h1>
     </div>
 
     <div class="register-container">
@@ -108,6 +125,9 @@
             <input name="password" type="password" placeholder="Masukkan Password" required>
             <button type="submit">Daftar</button>
         </form>
+        <div class="login-link">
+            <p>Sudah memiliki akun? <a href="/login">Login di sini</a></p>
+        </div>
     </div>
 
     <div class="footer">

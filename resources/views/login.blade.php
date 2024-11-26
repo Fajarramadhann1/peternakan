@@ -31,7 +31,7 @@
 
         /* Container styling */
         .login-container {
-            max-width: 400px;
+            max-width: 500px; /* Match the register form width */
             margin: 50px auto;
             padding: 20px;
             background-color: #ffffff;
@@ -79,6 +79,23 @@
             background-color: #db9b00;
         }
 
+        /* Additional link styling */
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .signup-link a {
+            color: #f6a600;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .signup-link a:hover {
+            color: #db9b00;
+        }
+
         /* Footer styling */
         .footer {
             text-align: center;
@@ -97,13 +114,16 @@
     </div>
 
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Login Akun</h2>
         <form action="/login" method="POST">
             @csrf
             <input name="nama" type="text" placeholder="Masukkan Nama" required>
             <input name="password" type="password" placeholder="Masukkan Password" required>
             <button type="submit">Login</button>
         </form>
+        <div class="signup-link">
+            <p>Belum memiliki akun? <a href="/register">Buat Akun</a></p>
+        </div>
     </div>
 
     <div class="footer">
