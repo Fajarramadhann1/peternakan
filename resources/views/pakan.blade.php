@@ -264,7 +264,7 @@
 
     <div class="post-container">
         <h2>DATA PAKAN</h2>
-        <form action="/create-post" method="POST">
+        <form action="/create-pakan" method="POST">
             @csrf
             <label for="pakan">Merk Pakan:</label>
             <select name="pakan" id="pakan" required>

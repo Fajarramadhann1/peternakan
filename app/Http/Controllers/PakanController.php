@@ -10,8 +10,8 @@ class PakanController extends Controller
     // Menampilkan halaman dengan data yang tersimpan
     public function index()
     {
-        $pakans = Pakan::all(); // Get all post data from the database
-        return view('halaman_pakan', ['pakans' => $pakans]); // Ensure the view name matches
+        $pakan = Pakan::all(); // Get all post data from the database
+        return view('halaman_pakan', ['pakan' => $pakan]); // Ensure the view name matches
     }
 
     // Menambahkan post baru

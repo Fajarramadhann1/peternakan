@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class AyamController extends Controller
 {
-    // Method untuk menghapus data ayam
     public function deleteAyam(Ayam $ayam) {
         $ayam->delete();
         return redirect('/ayam');
