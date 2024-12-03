@@ -9,10 +9,5 @@ class Penjualan extends Model
 {
     use HasFactory;
 
-    protected $table = 'penjualan';
-    
-    protected $fillable = [
-        'metode_penjualan',
-        'jumlah_penjualan',
-    ];
+    protected $fillable = ['metode_penjualan', 'jumlah_penjualan'];
 }

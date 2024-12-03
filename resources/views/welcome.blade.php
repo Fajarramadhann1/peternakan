@@ -124,7 +124,7 @@
                 <img src="https://static.vecteezy.com/system/resources/previews/014/655/524/original/finance-graph-chart-icon-simple-style-vector.jpg" alt="Penjualan">
                 <h2>Manajemen Penjualan</h2>
                 <p>Lacak dan kelola penjualan hasil ternak, penjadwalan penjualan, serta manajemen pelanggan dan pendapatan.</p>
-                <a href="/penjual">Kelola Penjualan</a>
+                <a href="/penjualan">Kelola Penjualan</a>
             </div>
         </div>
     </div>

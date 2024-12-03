@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PenjualanController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
