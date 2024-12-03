@@ -6,7 +6,6 @@ use App\Models\Pakan;
 use App\Models\Penjualan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AyamController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PenjualanController;
