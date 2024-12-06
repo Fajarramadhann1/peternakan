@@ -302,7 +302,7 @@
         </form>
 
         <div class="post-list">
-            <h2>Data Yang Tersimpan</h2>
+            <h2>Data Pakan Tersimpan</h2>
             @foreach ($pakans as $pakan)
             <div class="post">
                 <h3>{{ $pakan['title'] }}</h3>
