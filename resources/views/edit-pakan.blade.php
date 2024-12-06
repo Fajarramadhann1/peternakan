@@ -195,7 +195,7 @@
                 @endfor
             </select>
 
-            <button type="submit">Save Changes</button>
+            <button type="submit">Simpan Perubahan</button>
         </form>
     </div>
 
