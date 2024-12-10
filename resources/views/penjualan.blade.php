@@ -201,7 +201,6 @@
                 <p>{{ $penjualan['metode_penjualan'] }}</p>
 
                 <div class="post-actions">
-                    <a href="/edit-penjualan/{{ $penjualan->id_penjualan }}">Edit</a>
                     <form class="delete-penjualan" action="/delete-penjualan/{{ $penjualan->id_penjualan }}" method="POST" onsubmit="return confirm('Tekan Oke Kalau Yakin Post Di Hapus')">
                         @csrf
                         @method('DELETE')
