@@ -142,9 +142,13 @@
             <!-- Menggunakan variabel $pakans yang dikirim dari controller -->
             @foreach ($pakans as $data)
             <div class="post">
-                <h3>{{ $data->pakan }}</h3>
-                <p>Stok: {{ $data->stok }}</p>
+                <!-- Menampilkan Merk Pakan -->
+                <h3>{{ $data->title }}</h3> <!-- Menampilkan nama merk pakan -->
+                <!-- Menampilkan Stok -->
+                <p>Stok: {{ $data->body }}</p> <!-- Menampilkan jumlah stok -->
+                <!-- Menampilkan Harga -->
                 <p>Harga: Rp {{ number_format($data->harga, 0, ',', '.') }}</p>
+                <!-- Menampilkan Tanggal Ditambahkan -->
                 <p><span>Tanggal Ditambahkan:</span> {{ \Carbon\Carbon::parse($data->created_at)->format('d-m-Y') }}</p>
             </div>
             @endforeach
@@ -156,4 +160,3 @@
     </div>
 </body>
 </html>
-
