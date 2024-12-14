@@ -10,57 +10,63 @@ class PakanController extends Controller
     // Menampilkan halaman dengan data yang tersimpan
     public function index()
     {
-        $pakan = Pakan::all(); // Get all post data from the database
-        return view('halaman_pakan', ['pakan' => $pakan]); // Ensure the view name matches
+        $pakan = Pakan::all();
+        return view('pakan', ['pakan' => $pakan]);
     }
 
     // Menambahkan post baru
-    // Menambahkan post baru
-public function createPakan(Request $request)
-{
-    $incomingField = $request->validate([
-        'pakan' => 'required|string',
-        'stok' => 'required|integer|min:1|max:100', // Validasi stok antara 1 hingga 100
-        'harga' => 'required|integer|min:1000|max:500000', // Validasi harga
-    ]);
+    public function createPakan(Request $request)
+    {
+        $incomingField = $request->validate([
+            'pakan' => 'required|string',
+            'stok' => 'required|integer|min:1|max:100',
+            'harga' => 'required|integer|min:1000|max:500000',
+        ]);
 
-    Pakan::create([
-        'title' => $incomingField['pakan'],
-        'body' => 'Stok: ' . $incomingField['stok'],
-        'harga' => $incomingField['harga'], // Simpan harga ke database
-        'created_at' => now(),
-    ]);
+        Pakan::create([
+            'pakan' => $incomingField['pakan'], // Nama pakan
+            'stok' => $incomingField['stok'],   // Jumlah stok
+            'harga' => $incomingField['harga'], // Harga pakan
+            'created_at' => now(),
+        ]);
 
-    return redirect('/pakan');
-}
+        return redirect('/pakanbaru'); // Mengarahkan setelah menyimpan data
+    }
 
-// Mengupdate post yang ada
-public function actuallyUpdatePakan(Pakan $pakan, Request $request)
-{
-    $incomingField = $request->validate([
-        'title' => 'required|string',
-        'body' => 'required|string',
-        'harga' => 'required|integer|min:1000|max:500000', // Validasi harga
-    ]);
+    // Mengupdate post yang ada
+    public function actuallyUpdatePakan(Pakan $pakan, Request $request)
+    {
+        $incomingField = $request->validate([
+            'pakan' => 'required|string',
+            'stok' => 'required|integer|min:1|max:100',
+            'harga' => 'required|integer|min:1000|max:500000',
+        ]);
 
-    $pakan->update([
-        'title' => $incomingField['title'],
-        'body' => $incomingField['body'],
-        'harga' => $incomingField['harga'], // Update harga
-    ]);
+        $pakan->update([
+            'pakan' => $incomingField['pakan'],
+            'stok' => $incomingField['stok'],
+            'harga' => $incomingField['harga'],
+        ]);
 
-    return redirect('/pakan');
-}
+        return redirect('/pakan');
+    }
 
-public function deletePakan(Pakan $pakan)
+    public function deletePakan(Pakan $pakan)
     {
         $pakan->delete();
-        return redirect('/pakan'); // Redirect after deletion
+        return redirect('/pakan');
     }
 
     // Menampilkan layar edit
     public function showEditScreen(Pakan $pakan)
     {
         return view('edit-pakan', ['pakan' => $pakan]);
+    }
+
+    // Menampilkan halaman pakanbaru
+    public function pakanBaru()
+    {
+        $pakans = Pakan::all(); // Ambil semua data pakan
+        return view('pakanbaru', ['pakans' => $pakans]); // Pastikan variabel dikirim ke view
     }
 }
