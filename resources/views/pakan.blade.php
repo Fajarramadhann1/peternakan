@@ -55,6 +55,21 @@
             transform: scale(1.1);
         }
 
+        .button-pakan-baru {
+            color: #fff;
+            background-color: #f6a600;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button-pakan-baru:hover {
+            background-color: #db9b00;
+            transform: scale(1.05);
+        }
+
         .post-container {
             max-width: 800px;
             margin: 40px auto;
@@ -156,80 +171,6 @@
             transform: scale(1.05);
         }
 
-        .post-list {
-            margin-top: 30px;
-            padding: 30px;
-            background-color: #f9f9f9;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .post {
-            background-color: #f6a600;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            color: white;
-            font-size: 18px;
-            position: relative;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .post:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .post h3 {
-            margin: 0;
-            font-size: 22px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .post-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .post-actions a, .post-actions form button {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 16px;
-            width: 100px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 40px;
-            transition: background-color 0.3s, transform 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .post-actions form button {
-            background-color: red;
-        }
-
-        .post-actions a:hover, .post-actions form button:hover {
-            background-color: darkred;
-            transform: scale(1.1);
-            animation: shake 0.5s;
-        }
-
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-2px); }
-            50% { transform: translateX(2px); }
-            75% { transform: translateX(-2px); }
-            100% { transform: translateX(0); }
-        }
-
         /* Responsive Styles */
         @media (max-width: 600px) {
             .post-container {
@@ -264,7 +205,7 @@
 
     <div class="post-container">
         <h2>DATA PAKAN</h2>
-        <form action="/create-pakan" method="POST">
+        <form action="/pakanbaru" method="POST">
             @csrf
             <label for="pakan">Merk Pakan:</label>
             <select name="pakan" id="pakan" required>
@@ -299,38 +240,17 @@
             </select>
 
             <button type="submit">Simpan Data</button>
+            <!-- Tombol Pakan Baru -->
+            <a href="/pakanbaru" class="button-pakan-baru">Data Pakan Tersimpan</a>
         </form>
-
-        <div class="post-list">
-            <h2>Data Pakan Tersimpan</h2>
-            @foreach ($pakans as $pakan)
-            <div class="post">
-                <h3>{{ $pakan['title'] }}</h3>
-                <p>{{ $pakan['body'] }}</p>
-                <p>Harga Pakan: Rp {{ number_format($pakan['harga'], 0, ',', '.') }}</p>
-                <p><span>Tanggal Ditambahkan:</span> {{ \Carbon\Carbon::parse($pakan['created_at'])->format('d-m-Y') }}</p>
-
-                <div class="post-actions">
-                    <a href="/edit-pakan/{{ $pakan->id }}">Edit</a>
-                    <form class="delete-pakan" action="/delete-pakan/{{ $pakan->id }}" method="POST" onsubmit="return confirm('Tekan Oke Jika Data Ingin Di Hapus')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Hapus</button>
-                    </form>
-                </div>
-            </div>
-            @endforeach
-        </div>
     </div>
 
     <script>
-        // Fungsi JavaScript untuk menambahkan merk pakan baru ke dropdown
         function addNewPakan() {
             const newPakan = document.getElementById('new-pakan').value.trim();
             const select = document.getElementById('pakan');
 
             if (newPakan) {
-                // Cek jika merk pakan baru sudah ada di dropdown
                 for (let option of select.options) {
                     if (option.value.toLowerCase() === newPakan.toLowerCase()) {
                         alert('Merk pakan ini sudah ada!');
@@ -338,13 +258,12 @@
                     }
                 }
 
-                // Menambah merk pakan baru ke dropdown
                 const option = document.createElement('option');
                 option.value = newPakan;
                 option.textContent = newPakan;
                 select.appendChild(option);
-                select.value = newPakan; // Pilih otomatis merk pakan yang baru ditambahkan
-                document.getElementById('new-pakan').value = ''; // Reset input field
+                select.value = newPakan;
+                document.getElementById('new-pakan').value = '';
             } else {
                 alert('Silahkan masukkan nama merk pakan baru');
             }
