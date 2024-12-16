@@ -13,6 +13,7 @@ class TPKController extends Controller
      */
     public function index()
     {
-        return view('tpk.index');
+        // Pastikan untuk mengembalikan view dengan nama yang sesuai
+        return view('tpk'); // Mengarahkan ke TPK.blade.php
     }
 }

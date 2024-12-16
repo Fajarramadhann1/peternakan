@@ -10,7 +10,7 @@ use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PenjualanAyamController;
 use App\Http\Controllers\PenjualanPakanController;
-use App\Http\Controllers\TPKController; // Tambahkan import TPKController
+use App\Http\Controllers\TPKController; // Pastikan TPKController di-import
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,18 +20,18 @@ Route::get('/ayam', function () {
     $ayams = Ayam::all();
     return view('ayam', ['ayams' => $ayams]);
 });
-//AyamController
+// AyamController
 Route::post('/create-ayam', [AyamController::class,'createAyam']);
 Route::get('/edit-ayam/{ayam}',[AyamController::class, 'showEditScreen']);
 Route::put('/edit-ayam/{ayam}',[AyamController::class,'actuallyUpdateAyam']);
 Route::delete('/delete-ayam/{ayam}', [AyamController::class, 'deleteAyam']);
 
-//Penjualan
+// Penjualan
 Route::get('/penjualan', function () {
     $penjualans = Penjualan::all();
     return view('penjualan', ['penjualans' => $penjualans]);
 });
-//PenjualanController
+// PenjualanController
 Route::post('/create-penjualan', [PenjualanController::class,'createPenjualan']);
 Route::get('/edit-penjualan/{penjualan}',[PenjualanController::class, 'showEditScreen']);
 Route::put('/edit-penjualan/{penjualan}', [PenjualanController::class, 'actuallyUpdatePenjualan']);
@@ -63,7 +63,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
 
-//penjualanayam
+// Penjualan Ayam
 Route::get('/penjualan-ayam', [PenjualanAyamController::class, 'index']);
 Route::post('/create-penjualan-ayam', [PenjualanAyamController::class, 'store']);
 Route::delete('/delete-penjualan-ayam/{id}', [PenjualanAyamController::class, 'destroy']);
@@ -71,10 +71,10 @@ Route::delete('/delete-penjualan-ayam/{id}', [PenjualanAyamController::class, 'd
 Route::get('/edit-penjualan-ayam/{id}', [PenjualanAyamController::class, 'edit'])->name('edit-penjualan-ayam');
 Route::post('/update-penjualan-ayam/{id}', [PenjualanAyamController::class, 'update'])->name('update-penjualan-ayam');
 
-//penjualan pakan
+// Penjualan Pakan
 Route::get('/penjualan-pakan', [PenjualanPakanController::class, 'index']);
 Route::post('/penjualan-pakan', [PenjualanPakanController::class, 'store']);
 Route::delete('/penjualan-pakan/{id}', [PenjualanPakanController::class, 'destroy']);
 
 // TPK
-Route::get('/tpk', [TPKController::class, 'index'])->name('tpk.index'); // Route ke halaman TPK
+Route::get('/tpk', [TPKController::class, 'index'])->name('tpk.index'); // Route untuk halaman TPK

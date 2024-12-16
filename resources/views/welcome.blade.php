@@ -117,7 +117,7 @@
             <div class="feature-box">
                 <img src="https://media.istockphoto.com/id/1403292376/id/vektor/konsep-ikon-kantong-pakan-ayam-pertanian-dan-pertanian-modern.jpg?s=2048x2048&w=is&k=20&c=YsCAoPCJuRAMxQSHoS_I8maKvtK4KfveI_0P7g8oyBQ=" alt="Pakan">
                 <h2>Manajemen Pakan</h2>
-                <p>Mengelola Stok pakan untuk memastikan ketersediaan pakan yang cukup bagi hewan ternak, sehingga kebutuhan nutrisi mereka dapat terpenuhi secara berkelanjutan,.</p>
+                <p>Mengelola Stok pakan untuk memastikan ketersediaan pakan yang cukup bagi hewan ternak, sehingga kebutuhan nutrisi mereka dapat terpenuhi secara berkelanjutan.</p>
                 <a href="/pakan">Kelola Pakan</a>
             </div>
 
@@ -134,13 +134,14 @@
                 <img src="https://via.placeholder.com/100" alt="TPK">
                 <h2>Manajemen TPK</h2>
                 <p>Kelola tempat penyimpanan, stok bahan, dan alat-alat untuk mendukung aktivitas peternakan.</p>
-                <a href="/tpk">Kelola TPK</a>
+                <!-- Menggunakan route helper untuk mengarahkan ke halaman TPK -->
+                <a href="{{ route('tpk.index') }}">Kelola TPK</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>&copy;Peternakan Ayam Bapak Sarwani</p>
+        <p>&copy; {{ date('Y') }} Peternakan Ayam Bapak Sarwani</p>
     </footer>
 
 </body>
