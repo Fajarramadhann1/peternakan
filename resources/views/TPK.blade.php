@@ -108,6 +108,26 @@
                 font-weight: bold;
             }
         }
+
+        /* Button styles */
+        .back-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #f6a600;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #e58e00;
+        }
     </style>
 </head>
 <body>
@@ -124,44 +144,135 @@
                 <tr>
                     <th>Merk Pakan</th>
                     <th>Harga (Rp/kg)</th>
-                    <th>Kualitas Nutrisi (%)</th>
+                    <th>Kualitas Nutrisi (Protein %)</th>
                     <th>Ukuran Kemasan (kg)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-label="Merk Pakan">Japfa Comfeed</td>
-                    <td data-label="Harga (Rp/kg)">6000</td>
-                    <td data-label="Kualitas Nutrisi">21</td>
-                    <td data-label="Ukuran Kemasan">50</td>
+                    <td>Japfa Comfeed</td>
+                    <td>6000</td>
+                    <td>21</td>
+                    <td>50</td>
                 </tr>
                 <tr>
-                    <td data-label="Merk Pakan">Charoen Pokphand</td>
-                    <td data-label="Harga (Rp/kg)">6200</td>
-                    <td data-label="Kualitas Nutrisi">22</td>
-                    <td data-label="Ukuran Kemasan">50</td>
+                    <td>Charoen Pokphand</td>
+                    <td>6200</td>
+                    <td>22</td>
+                    <td>50</td>
                 </tr>
                 <tr>
-                    <td data-label="Merk Pakan">Malindo Feedmill</td>
-                    <td data-label="Harga (Rp/kg)">5800</td>
-                    <td data-label="Kualitas Nutrisi">20</td>
-                    <td data-label="Ukuran Kemasan">25</td>
+                    <td>Malindo Feedmill</td>
+                    <td>5800</td>
+                    <td>20</td>
+                    <td>25</td>
                 </tr>
                 <tr>
-                    <td data-label="Merk Pakan">Prima Feedmill</td>
-                    <td data-label="Harga (Rp/kg)">6100</td>
-                    <td data-label="Kualitas Nutrisi">22</td>
-                    <td data-label="Ukuran Kemasan">50</td>
+                    <td>Sierad Produce</td>
+                    <td>6100</td>
+                    <td>22</td>
+                    <td>50</td>
                 </tr>
                 <tr>
-                    <td data-label="Merk Pakan">Cargill Feed</td>
-                    <td data-label="Harga (Rp/kg)">5950</td>
-                    <td data-label="Kualitas Nutrisi">22</td>
-                    <td data-label="Ukuran Kemasan">25</td>
+                    <td>New Hope</td>
+                    <td>5900</td>
+                    <td>23</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Wonokoyo</td>
+                    <td>6050</td>
+                    <td>22</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Gold Coin</td>
+                    <td>6150</td>
+                    <td>22</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Feedmill Inti Prima</td>
+                    <td>6000</td>
+                    <td>22</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Sentra Profeed</td>
+                    <td>5850</td>
+                    <td>21</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>CJ Feed</td>
+                    <td>6200</td>
+                    <td>23</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Prima Feedmill</td>
+                    <td>6100</td>
+                    <td>22</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Cargill Feed</td>
+                    <td>5950</td>
+                    <td>22</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Bisi International</td>
+                    <td>6000</td>
+                    <td>22</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Lautan Luas</td>
+                    <td>6250</td>
+                    <td>23</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Sinta Prima Feedmill</td>
+                    <td>6050</td>
+                    <td>21</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Trouw Nutrition</td>
+                    <td>6400</td>
+                    <td>24</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Patriot Feed</td>
+                    <td>6150</td>
+                    <td>22</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Eka Farm</td>
+                    <td>5900</td>
+                    <td>21</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Gofeed</td>
+                    <td>6000</td>
+                    <td>22</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Greenfields Feed</td>
+                    <td>6300</td>
+                    <td>23</td>
+                    <td>50</td>
                 </tr>
             </tbody>
         </table>
+        <!-- Button to go back to welcome page -->
+        <a href="/welcome" class="back-button">Kembali ke Halaman Welcome</a>
     </div>
 </body>
 </html>
-
