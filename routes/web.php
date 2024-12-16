@@ -10,6 +10,7 @@ use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PenjualanAyamController;
 use App\Http\Controllers\PenjualanPakanController;
+use App\Http\Controllers\TPKController; // Tambahkan import TPKController
 
 Route::get('/', function () {
     return view('welcome');
@@ -71,7 +72,9 @@ Route::get('/edit-penjualan-ayam/{id}', [PenjualanAyamController::class, 'edit']
 Route::post('/update-penjualan-ayam/{id}', [PenjualanAyamController::class, 'update'])->name('update-penjualan-ayam');
 
 //penjualan pakan
-
 Route::get('/penjualan-pakan', [PenjualanPakanController::class, 'index']);
 Route::post('/penjualan-pakan', [PenjualanPakanController::class, 'store']);
 Route::delete('/penjualan-pakan/{id}', [PenjualanPakanController::class, 'destroy']);
+
+// TPK
+Route::get('/tpk', [TPKController::class, 'index'])->name('tpk.index'); // Route ke halaman TPK
