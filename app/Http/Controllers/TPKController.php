@@ -16,4 +16,14 @@ class TPKController extends Controller
         // Pastikan untuk mengembalikan view dengan nama yang sesuai
         return view('tpk'); // Mengarahkan ke TPK.blade.php
     }
+
+    /**
+     * Redirect to the Welcome page.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function backToWelcome()
+    {
+        return redirect()->route('pakan');
+    }
 }
