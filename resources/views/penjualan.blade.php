@@ -46,7 +46,7 @@
             background-color: #db9b00; /* Darker shade for hover */
         }
 
-        /* Container for the form */
+        /* Container styles */
         .post-container {
             max-width: 800px;
             margin: 20px auto;
@@ -63,107 +63,66 @@
             padding-bottom: 5px;
         }
 
-        /* Styling the form */
-        form {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
+        /* Navigation buttons */
+        .navigation-buttons {
+            display: flex;
+            flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 20px;
-            align-items: center;
+            justify-content: center;
         }
 
-        label {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        input[type="text"],
-        select,
-        button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 2px solid #ccc;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        select:focus {
-            border-color: #f6a600; /* Focus border color */
-            outline: none;
-        }
-
-        button {
-            grid-column: span 2;
+        .navigation-buttons a {
             background-color: #f6a600; /* Button color */
             color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #db9b00; /* Darker shade on hover */
-        }
-
-        /* Styling for post list */
-        .post-list {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .post {
-            background-color: #f6a600; /* Post background color */
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            color: white;
-        }
-
-        .post h3 {
-            margin: 0;
-        }
-
-        /* Styling for edit and delete links */
-        .post-actions {
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .post-actions a,
-        .post-actions form button {
-            background-color: #333;
-            color: #fff;
-            padding: 5px 10px;
+            padding: 15px 25px;
             text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+            text-align: center;
         }
 
-        .post-actions a:hover,
-        .post-actions form button:hover {
-            background-color: #555;
+        .navigation-buttons a:hover {
+            background-color: #db9b00; /* Darker shade on hover */
+            transform: translateY(-3px);
         }
 
-        form.delete-post {
-            display: inline;
+        /* Footer styles */
+        .footer {
+            background-color: #f6a600;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            color: #ffffff;
+            font-size: 14px;
+            border-top: 5px solid #db9b00;
         }
 
-        form.delete-post button {
-            background-color: red;
+        .footer a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
-        form.delete-post button:hover {
-            background-color: darkred;
+        .footer a:hover {
+            color: #333333;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .navigation-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navigation-buttons a {
+                margin-bottom: 10px;
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -178,38 +137,18 @@
     </div>
 
     <div class="post-container">
-        <form action="/create-penjualan" method="POST">
-            @csrf
-            <label for="jumlah_penjualan">Jumlah Penjualan:</label>
-            <select name="jumlah_penjualan" id="jumlah_penjualan" required>
-                @for ($i = 1; $i <= 5000; $i++)
-                    <option value="{{ $i }}">{{ $i }}</option>
-                @endfor
-            </select>
-            
-            <label for="metode_penjualan">Jenis Penjualan:</label>
-            <input type="text" name="metode_penjualan" id="metode_penjualan" placeholder="Masukkan jenis penjualan..." required>
-            
-            <button type="submit">Simpan Data</button>
-        </form>
-        
-        <div class="post-list">
-            <h2>Data Yang Tersimpan</h2>
-            @foreach ($penjualans as $penjualan)
-            <div class="post">
-                <h3>{{ $penjualan['jumlah_penjualan'] }}</h3>
-                <p>{{ $penjualan['metode_penjualan'] }}</p>
+        <h2>Menu Pilihan</h2>
 
-                <div class="post-actions">
-                    <form class="delete-penjualan" action="/delete-penjualan/{{ $penjualan->id_penjualan }}" method="POST" onsubmit="return confirm('Tekan Oke Kalau Yakin Post Di Hapus')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Hapus</button>
-                    </form>
-                </div>
-            </div>
-            @endforeach
+        <!-- Navigation Buttons -->
+        <div class="navigation-buttons">
+            <a href="/penjualan-ayam">Data Penjualan Ayam</a>
+            <a href="/penjualan-pakan">Data Penjualan Pakan</a>
+            <a href="/laporan">Laporan Penjualan</a>
         </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Halaman Penjualan. Dikembangkan oleh <a href="#">Tim Kami</a>.
     </div>
 </body>
 </html>

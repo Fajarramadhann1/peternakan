@@ -8,6 +8,8 @@ use App\Http\Controllers\AyamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PakanController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\PenjualanAyamController;
+use App\Http\Controllers\PenjualanPakanController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,3 +61,17 @@ Route::get('/register', function () {
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
+
+//penjualanayam
+Route::get('/penjualan-ayam', [PenjualanAyamController::class, 'index']);
+Route::post('/create-penjualan-ayam', [PenjualanAyamController::class, 'store']);
+Route::delete('/delete-penjualan-ayam/{id}', [PenjualanAyamController::class, 'destroy']);
+
+Route::get('/edit-penjualan-ayam/{id}', [PenjualanAyamController::class, 'edit'])->name('edit-penjualan-ayam');
+Route::post('/update-penjualan-ayam/{id}', [PenjualanAyamController::class, 'update'])->name('update-penjualan-ayam');
+
+//penjualan pakan
+
+Route::get('/penjualan-pakan', [PenjualanPakanController::class, 'index']);
+Route::post('/penjualan-pakan', [PenjualanPakanController::class, 'store']);
+Route::delete('/penjualan-pakan/{id}', [PenjualanPakanController::class, 'destroy']);
