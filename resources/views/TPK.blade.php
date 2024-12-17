@@ -269,9 +269,122 @@
                     <td>23</td>
                     <td>50</td>
                 </tr>
+        </table>
+
+        <!-- Tabel SAW -->
+        <h2>Perhitungan SAW</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Merk Pakan</th>
+                    <th>Harga (Rp/kg) [Cost]</th>
+                    <th>Kualitas Nutrisi (Protein %) [Benefit]</th>
+                    <th>Ukuran Kemasan (kg) [Benefit]</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>P1</td><td>1,066666667</td><td>0,875</td><td>1</td></tr>
+                <tr><td>P2</td><td>1,032258065</td><td>0,916666667</td><td>1</td></tr>
+                <tr><td>P3</td><td>1,103448276</td><td>0,833333333</td><td>0,5</td></tr>
+                <tr><td>P4</td><td>1,049180328</td><td>0,916666667</td><td>1</td></tr>
+                <tr><td>P5</td><td>1,084745763</td><td>0,958333333</td><td>0,5</td></tr>
+                <tr><td>P6</td><td>1,05785124</td><td>0,916666667</td><td>1</td></tr>
+                <tr><td>P7</td><td>1,040650407</td><td>0,916666667</td><td>1</td></tr>
+                <tr><td>P8</td><td>1,066666667</td><td>0,916666667</td><td>0,5</td></tr>
+                <tr><td>P9</td><td>1,094017094</td><td>0,875</td><td>1</td></tr>
+                <tr><td>P10</td><td>1,032258065</td><td>0,958333333</td><td>1</td></tr>
+                <tr><td>P11</td><td>1,049180328</td><td>0,916666667</td><td>1</td></tr>
+                <tr><td>P12</td><td>1,075630252</td><td>0,916666667</td><td>0,5</td></tr>
+                <tr><td>P13</td><td>1,066666667</td><td>0,916666667</td><td>1</td></tr>
+                <tr><td>P14</td><td>1,024</td><td>0,958333333</td><td>1</td></tr>
+                <tr><td>P15</td><td>1,05785124</td><td>0,875</td><td>1</td></tr>
+                <tr><td>P16</td><td>1</td><td>1</td><td>0,5</td></tr>
+                <tr><td>P17</td><td>1,040650407</td><td>0,916666667</td><td>1</td></tr>
+                <tr><td>P18</td><td>1,084745763</td><td>0,875</td><td>0,5</td></tr>
+                <tr><td>P19</td><td>1,066666667</td><td>0,916666667</td><td>1</td></tr>
+                <tr><td>P20</td><td>1,015873016</td><td>0,958333333</td><td>1</td></tr>
             </tbody>
         </table>
-        <!-- Button to go back to welcome page -->
+        <h2>Tabel Kriteria dan Eigen Vector</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Kriteria</th>
+                    <th>Harga</th>
+                    <th>Kualitas Nutrisi</th>
+                    <th>Ukuran Kemasan</th>
+                    <th>Eigen Vector Harga</th>
+                    <th>Eigen Vector Kualitas Nutrisi</th>
+                    <th>Eigen Vector Ukuran Kemasan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Harga</td>
+                    <td>1</td>
+                    <td>0,5</td>
+                    <td>2</td>
+                    <td>0,271164021</td>
+                    <td>0,583994709</td>
+                    <td>0,14484127</td>
+                </tr>
+                <tr>
+                    <td>Kualitas Nutrisi</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Ukuran Kemasan</td>
+                    <td>0,5</td>
+                    <td>0,3</td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Hasil Perhitungan</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Kriteria</th>
+                    <th>Harga</th>
+                    <th>Kualitas Nutrisi</th>
+                    <th>Ukuran Kemasan</th>
+                    <th>Bobot</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Harga</td>
+                    <td>0,285714286</td>
+                    <td>0,277777778</td>
+                    <td>0,25</td>
+                    <td>0,271164021</td>
+                </tr>
+                <tr>
+                    <td>Kualitas Nutrisi</td>
+                    <td>0,571428571</td>
+                    <td>0,555555556</td>
+                    <td>0,625</td>
+                    <td>0,583994709</td>
+                </tr>
+                <tr>
+                    <td>Ukuran Kemasan</td>
+                    <td>0,142857143</td>
+                    <td>0,166666667</td>
+                    <td>0,125</td>
+                    <td>0,14484127</td>
+                </tr>
+            </tbody>
+        </table>
+
         <a href="/" class="back-button">Kembali ke Halaman Welcome</a>
     </div>
 </body>
