@@ -24,6 +24,6 @@ class TPKController extends Controller
      */
     public function backToWelcome()
     {
-        return redirect()->route('pakan');
+        return redirect()->route('welcome');
     }
 }

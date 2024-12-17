@@ -81,7 +81,7 @@ Route::delete('/penjualan-pakan/{id}', [PenjualanPakanController::class, 'destro
 // TPK routes
 Route::get('/tpk', [TPKController::class, 'index'])->name('tpk.index'); // Route untuk halaman TPK
 
-// Route untuk mengarahkan kembali ke halaman welcome
+// Route untuk mengarahkan kembali ke halaman pakan
 Route::get('/back-to-welcome', function () {
-    return redirect()->route('pakan');
+    return redirect()->route('welcome');
 });

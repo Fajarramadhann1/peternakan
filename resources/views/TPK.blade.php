@@ -272,7 +272,7 @@
             </tbody>
         </table>
         <!-- Button to go back to welcome page -->
-        <a href="/pakan" class="back-button">Kembali ke Halaman Pakan</a>
+        <a href="/" class="back-button">Kembali ke Halaman Pakan</a>
     </div>
 </body>
 </html>
