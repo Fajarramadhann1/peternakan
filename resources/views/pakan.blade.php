@@ -210,16 +210,16 @@
             <label for="pakan">Merk Pakan:</label>
             <select name="pakan" id="pakan" required>
                 <option value="">Pilih Merk Pakan</option>
-                <option value="Prima Feedmill">Japfa Comfeed</option>
-                <option value="Prima Feedmill">Charoen Pokphand</option>
-                <option value="Prima Feedmill">Malindo Feedmill</option>
-                <option value="Prima Feedmill">Sierad Produce</option>
-                <option value="Prima Feedmill">New Hope</option>
-                <option value="Prima Feedmill">Wonokoyo</option>
-                <option value="Prima Feedmill">Gold Coin</option>
-                <option value="Prima Feedmill">Feedmill Inti Prima</option>
-                <option value="Prima Feedmill">Sentra Profeed</option>
-                <option value="Prima Feedmill">CJ Feed</option>
+                <option value="Japfa Comfeed">Japfa Comfeed</option>
+                <option value="Charoen Pokphand">Charoen Pokphand</option>
+                <option value="Malindo Feedmill">Malindo Feedmill</option>
+                <option value="Sierad Produce">Sierad Produce</option>
+                <option value="New Hope">New Hope</option>
+                <option value="Wonokoyo">Wonokoyo</option>
+                <option value="Gold Coin">Gold Coin</option>
+                <option value="Feedmill Inti Prima">Feedmill Inti Prima</option>
+                <option value="Sentra Profeed">Sentra Profeed</option>
+                <option value="CJ Feed">CJ Feed</option>
                 <option value="Prima Feedmill">Prima Feedmill</option>
                 <option value="Cargill Feed">Cargill Feed</option>
                 <option value="Bisi International">Bisi International</option>
