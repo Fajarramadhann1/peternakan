@@ -151,6 +151,12 @@
                 <!-- Menampilkan Tanggal Ditambahkan -->
                 <p><span>Tanggal Ditambahkan:</span> {{ \Carbon\Carbon::parse($data->created_at)->format('d-m-Y') }}</p>
             </div>
+            <a href="/edit-pakan/{{ $data->id }}">Edit</a>
+            <form action="/delete-pakan/{{ $data->id }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Hapus</button>
+            </form>
             @endforeach
         </div>
     </div>
