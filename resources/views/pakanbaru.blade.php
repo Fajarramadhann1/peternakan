@@ -143,9 +143,9 @@
             @foreach ($pakans as $data)
             <div class="post">
                 <!-- Menampilkan Merk Pakan -->
-                <h3>{{ $data->title }}</h3> <!-- Menampilkan nama merk pakan -->
+                <h3>{{ $data->pakan }}</h3> <!-- Menampilkan nama merk pakan -->
                 <!-- Menampilkan Stok -->
-                <p>Stok: {{ $data->body }}</p> <!-- Menampilkan jumlah stok -->
+                <p>Stok: {{ $data->stok }}</p> <!-- Menampilkan jumlah stok -->
                 <!-- Menampilkan Harga -->
                 <p>Harga: Rp {{ number_format($data->harga, 0, ',', '.') }}</p>
                 <!-- Menampilkan Tanggal Ditambahkan -->

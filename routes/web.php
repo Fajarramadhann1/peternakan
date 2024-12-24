@@ -44,7 +44,7 @@ Route::get('/pakan', function () {
     $pakans = Pakan::all();
     return view('pakan', ['pakan' => $pakans]);
 });
-Route::post('/pakanbaru', [PakanController::class, 'pakanbaru']);
+Route::post('/pakanbaru', [PakanController::class, 'createPakan']);
 Route::get('/edit-pakan/{pakan}', [PakanController::class, 'showEditScreen']);
 Route::put('/edit-pakan/{pakan}', [PakanController::class, 'actuallyUpdatePakan']);
 Route::delete('/delete-pakan/{pakan}', [PakanController::class, 'deletePakan']);

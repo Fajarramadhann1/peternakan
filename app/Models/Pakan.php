@@ -9,10 +9,10 @@ class Pakan extends Model
 {
     use HasFactory;
     protected $table = 'pakan';
-    
+
     protected $fillable = [
-        'title',
-        'body',
+        'pakan',
+        'stok',
         'harga',
     ];
 }

@@ -20,14 +20,15 @@ class PakanController extends Controller
         $incomingField = $request->validate([
             'pakan' => 'required|string',
             'stok' => 'required|integer|min:1|max:100',
-            'harga' => 'required|integer|min:1000|max:500000',
+            'harga' => 'required|integer|max:500000',
         ]);
 
+        // dd($request->all());
+
         Pakan::create([
-            'pakan' => $incomingField['pakan'], // Nama pakan
-            'stok' => $incomingField['stok'],   // Jumlah stok
-            'harga' => $incomingField['harga'], // Harga pakan
-            'created_at' => now(),
+                'pakan' => $request->pakan, // Nama pakan
+                'stok' => $request->stok,   // Jumlah stok
+                'harga' => $request->harga, // Harga pakan
         ]);
 
         return redirect('/pakanbaru'); // Mengarahkan setelah menyimpan data
