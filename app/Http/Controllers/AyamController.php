@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Ayam;
 use Illuminate\Http\Request;
 
@@ -56,6 +55,14 @@ class AyamController extends Controller
         // Simpan data ayam
         Ayam::create($incomingField);
         return redirect('/ayam');
-        
+    }
+
+    // Tambahkan method untuk halaman ayambaru
+    public function indexAyamBaru() {
+        // Ambil data ayam dari database
+        $ayams = Ayam::all();
+
+        // Kirim data ke view ayambaru.blade.php
+        return view('ayambaru', compact('ayams'));
     }
 }

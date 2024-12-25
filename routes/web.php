@@ -28,6 +28,9 @@ Route::get('/edit-ayam/{ayam}',[AyamController::class, 'showEditScreen']);
 Route::put('/edit-ayam/{ayam}',[AyamController::class,'actuallyUpdateAyam']);
 Route::delete('/delete-ayam/{ayam}', [AyamController::class, 'deleteAyam']);
 
+// Tambahkan route untuk halaman ayambaru
+Route::get('/ayambaru', [AyamController::class, 'indexAyamBaru']);
+
 // Penjualan routes
 Route::get('/penjualan', function () {
     $penjualans = Penjualan::all();
