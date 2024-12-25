@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Pakan Baru</title>
     <style>
         /* General styles */
@@ -114,6 +115,44 @@
             color: #333;
         }
 
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .action-buttons a,
+        .action-buttons button {
+            text-decoration: none;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-buttons a {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .action-buttons a:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .action-buttons button {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .action-buttons button:hover {
+            background-color: #e53935;
+            transform: scale(1.05);
+        }
+
         /* Responsive Styles */
         @media (max-width: 600px) {
             .post-container {
@@ -127,9 +166,40 @@
             .post {
                 width: 100%;
             }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
 
     </style>
+    <script>
+        async function deletePakan(event, form) {
+            event.preventDefault();
+            if (confirm('Yakin ingin menghapus data ini?')) {
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ _method: 'DELETE' })
+                    });
+
+                    if (response.ok) {
+                        form.closest('.post').remove();
+                        alert('Data berhasil dihapus.');
+                    } else {
+                        alert('Gagal menghapus data.');
+                    }
+                } catch (error) {
+                    alert('Terjadi kesalahan. Coba lagi nanti.');
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="header">
@@ -150,13 +220,16 @@
                 <p>Harga: Rp {{ number_format($data->harga, 0, ',', '.') }}</p>
                 <!-- Menampilkan Tanggal Ditambahkan -->
                 <p><span>Tanggal Ditambahkan:</span> {{ \Carbon\Carbon::parse($data->created_at)->format('d-m-Y') }}</p>
+
+                <div class="action-buttons">
+                    <a href="/edit-pakan/{{ $data->id }}">Edit</a>
+                    <form action="/delete-pakan/{{ $data->id }}" method="POST" onsubmit="deletePakan(event, this)">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Hapus</button>
+                    </form>
+                </div>
             </div>
-            <a href="/edit-pakan/{{ $data->id }}">Edit</a>
-            <form action="/delete-pakan/{{ $data->id }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Hapus</button>
-            </form>
             @endforeach
         </div>
     </div>
