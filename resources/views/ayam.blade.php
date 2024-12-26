@@ -129,6 +129,9 @@
             </select>
 
             <button type="submit">Simpan Data</button>
+            <a href="/ayambaru" class="button-pakan-baru" style="display: inline-block; background-color: #f6a600; color: white; padding: 10px 20px; border-radius: 5px; font-size: 16px; text-decoration: none; text-align: center; transition: background-color 0.3s;">
+                Data Ayam Tersimpan
+            </a>
         </form>
     </div>
 </body>

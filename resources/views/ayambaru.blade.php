@@ -92,6 +92,27 @@
             </div>
         @endforeach
     </div>
+    <style>
+        .back-button a {
+            background-color: #f6a600; /* Sama dengan tombol simpan data */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .back-button a:hover {
+            background-color: #db9b00; /* Sama dengan tombol simpan data */
+            transform: scale(1.05);
+        }
+    </style>
+
+    <div class="back-button">
+        <a href="/ayam">Kembali ke Halaman Ayam</a>
 </body>
 </html>
 
