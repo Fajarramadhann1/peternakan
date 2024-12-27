@@ -393,26 +393,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Malindo Feedmill</td><td>1588,052</td></tr>
-                <tr><td>Sentra Profeed</td><td>1605,815</td></tr>
-                <tr><td>Eka Farm</td><td>1615,753</td></tr>
-                <tr><td>New Hope</td><td>1616,921</td></tr>
-                <tr><td>Cargill Feed</td><td>1629,895</td></tr>
-                <tr><td>Feedmill Inti Farma</td><td>1643,453</td></tr>
-                <tr><td>Japfa Comfeed</td><td>1646,49</td></tr>
-                <tr><td>Bisi International</td><td>1647,074</td></tr>
-                <tr><td>Gofeed</td><td>1647,074</td></tr>
-                <tr><td>Sinta Prima Feedmill</td><td>1660,048</td></tr>
-                <tr><td>Wonokoyo</td><td>1660,632</td></tr>
-                <tr><td>Sierad Produce</td><td>1674,19</td></tr>
-                <tr><td>Prima Feedmill</td><td>1674,19</td></tr>
-                <tr><td>Gold Coin</td><td>1687,749</td></tr>
-                <tr><td>Patriot Feed</td><td>1687,749</td></tr>
-                <tr><td>Charoen Pokphand</td><td>1701,307</td></tr>
-                <tr><td>CJ Feed</td><td>1701,891</td></tr>
-                <tr><td>Lautan Luas</td><td>1715,449</td></tr>
-                <tr><td>Greendfields Feed</td><td>1729,007</td></tr>
                 <tr><td>Trouw Nutrition</td><td>1753,087</td></tr>
+<tr><td>Greendfields Feed</td><td>1729,007</td></tr>
+<tr><td>Lautan Luas</td><td>1715,449</td></tr>
+<tr><td>CJ Feed</td><td>1701,891</td></tr>
+<tr><td>Charoen Pokphand</td><td>1701,307</td></tr>
+<tr><td>Patriot Feed</td><td>1687,749</td></tr>
+<tr><td>Gold Coin</td><td>1687,749</td></tr>
+<tr><td>Prima Feedmill</td><td>1674,19</td></tr>
+<tr><td>Sierad Produce</td><td>1674,19</td></tr>
+<tr><td>Wonokoyo</td><td>1660,632</td></tr>
+<tr><td>Sinta Prima Feedmill</td><td>1660,048</td></tr>
+<tr><td>Gofeed</td><td>1647,074</td></tr>
+<tr><td>Bisi International</td><td>1647,074</td></tr>
+<tr><td>Japfa Comfeed</td><td>1646,49</td></tr>
+<tr><td>Feedmill Inti Farma</td><td>1643,453</td></tr>
+<tr><td>Cargill Feed</td><td>1629,895</td></tr>
+<tr><td>New Hope</td><td>1616,921</td></tr>
+<tr><td>Eka Farm</td><td>1615,753</td></tr>
+<tr><td>Sentra Profeed</td><td>1605,815</td></tr>
+<tr><td>Malindo Feedmill</td><td>1588,052</td></tr>
+
             </tbody>
         </table>
 

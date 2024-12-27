@@ -28,6 +28,9 @@ Route::get('/edit-ayam/{ayam}',[AyamController::class, 'showEditScreen']);
 Route::put('/edit-ayam/{ayam}',[AyamController::class,'actuallyUpdateAyam']);
 Route::delete('/delete-ayam/{ayam}', [AyamController::class, 'deleteAyam']);
 
+// Tambahkan route untuk halaman ayambaru
+Route::get('/ayambaru', [AyamController::class, 'indexAyamBaru']);
+
 // Penjualan routes
 Route::get('/penjualan', function () {
     $penjualans = Penjualan::all();
@@ -44,7 +47,7 @@ Route::get('/pakan', function () {
     $pakans = Pakan::all();
     return view('pakan', ['pakan' => $pakans]);
 });
-Route::post('/pakanbaru', [PakanController::class, 'pakanbaru']);
+Route::post('/pakanbaru', [PakanController::class, 'createPakan']);
 Route::get('/edit-pakan/{pakan}', [PakanController::class, 'showEditScreen']);
 Route::put('/edit-pakan/{pakan}', [PakanController::class, 'actuallyUpdatePakan']);
 Route::delete('/delete-pakan/{pakan}', [PakanController::class, 'deletePakan']);
