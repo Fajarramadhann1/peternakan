@@ -97,7 +97,6 @@
                 </button>
             </div>
         @endif
-
         <form action="/create-ayam" method="POST">
             @csrf
             <select name="kategori_ayam" required>
@@ -106,28 +105,35 @@
                 <option value="Ayam Sedang">Ayam Sedang</option>
                 <option value="Ayam Besar">Ayam Besar</option>
             </select>
-
-            <select name="harga_ayam" required>
-                <option value="">Pilih Harga Ayam</option>
-                <option value="18000">Rp 18.000/kg</option>
-                <option value="20000">Rp 20.000/kg</option>
-                <option value="22000">Rp 22.000/kg</option>
-                <option value="30000">Rp 30.000/kg</option>
-            </select>
-
-            <select name="stok_ayam" required>
-                <option value="">Pilih Stok Ayam</option>
-                <option value="1000">1.000 ekor</option>
-                <option value="2000">2.000 ekor</option>
-                <option value="5000">5.000 ekor</option>
-            </select>
-
+        
+            <!-- Input teks untuk harga ayam -->
+            <input 
+                type="text" 
+                name="harga_ayam" 
+                placeholder="Masukkan Harga Ayam (contoh: 20000)" 
+                required 
+                pattern="\d+" 
+                title="Masukkan hanya angka tanpa simbol atau spasi" 
+                style="width: 100%; padding: 10px; border-radius: 5px; margin-bottom: 10px; border: 1px solid #ccc; font-size: 16px;"
+            >
+        
+            <!-- Input teks untuk stok ayam -->
+            <input 
+                type="text" 
+                name="stok_ayam" 
+                placeholder="Masukkan Stok Ayam (contoh: 1000)" 
+                required 
+                pattern="\d+" 
+                title="Masukkan hanya angka tanpa simbol atau spasi" 
+                style="width: 100%; padding: 10px; border-radius: 5px; margin-bottom: 10px; border: 1px solid #ccc; font-size: 16px;"
+            >
+        
             <select name="nama_kandang" required>
                 <option value="">Pilih Nama Kandang</option>
                 <option value="Kandang A">Kandang A</option>
                 <option value="Kandang B">Kandang B</option>
             </select>
-
+        
             <button type="submit">Simpan Data</button>
             <a href="/ayambaru" class="button-pakan-baru" style="display: inline-block; background-color: #f6a600; color: white; padding: 10px 20px; border-radius: 5px; font-size: 16px; text-decoration: none; text-align: center; transition: background-color 0.3s;">
                 Data Ayam Tersimpan

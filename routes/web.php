@@ -79,7 +79,7 @@ Route::post('/update-penjualan-ayam/{id}', [PenjualanAyamController::class, 'upd
 // Penjualan Pakan routes
 Route::get('/penjualan-pakan', [PenjualanPakanController::class, 'index']);
 Route::post('/penjualan-pakan', [PenjualanPakanController::class, 'store']);
-Route::delete('/penjualan-pakan/{id}', [PenjualanPakanController::class, 'destroy']);
+Route::delete('/delete-penjualan-pakan/{id}', [PenjualanPakanController::class, 'destroy']);
 Route::get('/edit-penjualan-pakan/{id}', [PenjualanPakanController::class, 'edit']);
 Route::put('/update-penjualan-pakan/{id}', [PenjualanPakanController::class, 'update']);
 

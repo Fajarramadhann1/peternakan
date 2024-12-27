@@ -143,7 +143,7 @@
         <div class="navigation-buttons">
             <a href="/penjualan-ayam">Data Penjualan Ayam</a>
             <a href="/penjualan-pakan">Data Penjualan Pakan</a>
-        </div>
+        </div> 
     </div>
 
     <div class="footer">
