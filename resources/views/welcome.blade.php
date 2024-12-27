@@ -37,7 +37,7 @@
             justify-content: space-between;
             margin-bottom: 30px;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 20px; /* Still spacing vertically, but reduced horizontal margin in feature-box */
         }
 
         .feature-box {
@@ -48,6 +48,8 @@
             padding: 20px;
             text-align: center;
             transition: transform 0.3s ease-in-out;
+            margin-left: 95px;  /* Reduced left margin */
+            margin-right: 95px; /* Reduced right margin */
         }
 
         .feature-box:hover {
@@ -131,7 +133,7 @@
 
             <!-- Fitur TPK -->
             <div class="feature-box">
-                <img src="https://via.placeholder.com/100" alt="TPK">
+                <img src="{{ asset('assets/img/bintang.jpg') }}" alt="TPK" style="width: 110px; height: auto;">
                 <h2>Manajemen TPK</h2>
                 <p>Kelola tempat penyimpanan, stok bahan, dan alat-alat untuk mendukung aktivitas peternakan.</p>
                 <!-- Menggunakan route helper untuk mengarahkan ke halaman TPK -->
