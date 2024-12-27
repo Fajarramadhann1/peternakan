@@ -58,4 +58,38 @@ class AyamController extends Controller
         return redirect('/ayam');
         
     }
+public function store(Request $request)
+{
+    // Validasi input
+    $request->validate([
+        'kategori_ayam' => 'required|string',
+        'harga_ayam' => 'required|integer',
+        'stok_ayam' => 'required|integer',
+        'nama_kandang' => 'required|string',
+    ]);
+
+    // Cek apakah data ayam sudah ada dengan kategori, harga, dan kandang yang sama
+    $ayam = Ayam::where('kategori_ayam', $request->kategori_ayam)
+                ->where('harga_ayam', $request->harga_ayam)
+                ->where('nama_kandang', $request->nama_kandang)
+                ->first();
+
+    if ($ayam) {
+        // Jika sudah ada, tambahkan stok ayam ke data yang ada
+        $ayam->stok_ayam += $request->stok_ayam;
+        $ayam->save();
+    } else {
+        // Jika belum ada, buat data baru
+        Ayam::create([
+            'kategori_ayam' => $request->kategori_ayam,
+            'harga_ayam' => $request->harga_ayam,
+            'stok_ayam' => $request->stok_ayam,
+            'nama_kandang' => $request->nama_kandang,
+        ]);
+    }
+
+    // Redirect dengan pesan sukses
+    return redirect()->back()->with('success', 'Data ayam berhasil disimpan atau diperbarui.');
+}
+
 }

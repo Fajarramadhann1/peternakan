@@ -29,14 +29,14 @@ class PenjualanAyamController extends Controller
         PenjualanAyam::findOrFail($id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
+    //edit
     public function edit($id)
 {
     $penjualanAyam = PenjualanAyam::findOrFail($id);
     return view('edit-penjualan-ayam', compact('penjualanAyam'));
 }
 
-public function update(Request $request, $id)
-{
+public function update(Request $request, $id){
     $request->validate([
         'jumlah_penjualan' => 'required|integer',
         'harga' => 'required|integer',

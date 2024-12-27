@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('ayam', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('stok_ayam');
-            $table->string('harga_ayam');
-            $table->string('kategori_ayam');
-            $table->string('nama_kandang');
+            $table->integer('stok_ayam'); // Tipe data integer untuk stok
+            $table->integer('harga_ayam'); // Tipe data integer untuk harga
+            $table->string('kategori_ayam'); // Nama kategori ayam
+            $table->string('nama_kandang'); // Nama kandang ayam
+
+            // Jika ingin mencegah duplicate data dengan kombinasi kolom tertentu
+            $table->unique(['kategori_ayam', 'harga_ayam', 'nama_kandang']);
         });
     }
 

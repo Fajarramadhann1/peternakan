@@ -22,6 +22,22 @@
             font-size: 24px;
         }
 
+        .nav-links {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #f6a600;
+        }
+
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -37,6 +53,10 @@
             gap: 10px;
         }
 
+        label {
+            font-weight: bold;
+        }
+
         input, button {
             padding: 10px;
             font-size: 16px;
@@ -47,6 +67,7 @@
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 4px;
         }
 
         button:hover {
@@ -65,8 +86,15 @@
             border-radius: 4px;
         }
 
-        .data-item form {
-            display: inline;
+        .data-item a {
+            color: white;
+            margin-right: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .data-item a:hover {
+            text-decoration: underline;
         }
 
         .delete-button {
@@ -87,29 +115,43 @@
     <div class="header">
         Kelola Penjualan Pakan
     </div>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/penjualan-ayam">Penjualan Ayam</a>
+    </div>
+
     <div class="container">
+        <!-- Form Tambah Data Penjualan -->
         <form action="/penjualan-pakan" method="POST">
             @csrf
             <label for="jumlah_penjualan">Jumlah Penjualan:</label>
-            <input type="number" name="jumlah_penjualan" id="jumlah_penjualan" required>
+            <input type="number" name="jumlah_penjualan" id="jumlah_penjualan" placeholder="Masukkan jumlah penjualan..." required>
 
             <label for="harga">Harga:</label>
-            <input type="number" name="harga" id="harga" required>
+            <input type="number" name="harga" id="harga" placeholder="Masukkan harga..." required>
 
             <button type="submit">Simpan</button>
         </form>
 
+        <!-- Daftar Data Penjualan -->
         <div class="data-list">
             <h3>Data Penjualan Pakan</h3>
             @foreach ($penjualanPakan as $pakan)
             <div class="data-item">
                 <p>Jumlah: {{ $pakan->jumlah_penjualan }}</p>
                 <p>Harga: Rp{{ number_format($pakan->harga, 0, ',', '.') }}</p>
-                <form action="/penjualan-pakan/{{ $pakan->id }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="delete-button">Hapus</button>
-                </form>
+                <div>
+                    <!-- Link Edit -->
+                    <a href="/edit-penjualan-pakan/{{ $pakan->id }}">Edit</a>
+                    <!-- Tombol Hapus -->
+                    <form action="/delete-penjualan-pakan/{{ $pakan->id }}" method="POST" style="display: inline;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete-button">Hapus</button>
+                    </form>
+                </div>
             </div>
             @endforeach
         </div>
