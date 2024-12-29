@@ -36,65 +36,52 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .post {
+        .ayam-list h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .category {
             background-color: #f6a600;
-            padding: 15px;
+            padding: 10px;
             margin-bottom: 15px;
             border-radius: 8px;
             color: white;
+            cursor: pointer;
         }
 
-        .post h3 {
-            margin: 0;
-            font-size: 20px;
+        .category:hover {
+            background-color: #db9b00;
+        }
+
+        .post {
+            background-color: #ffffff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .post p {
             margin: 5px 0;
+            font-size: 16px;
+        }
+
+        /* Kandang section always visible */
+        .kandang {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: bold;
         }
 
         .post-actions {
             margin-top: 10px;
         }
 
-        .post-actions a,
-        .post-actions button {
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            background-color: #333;
-            color: #fff;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>Data Ayam</h1>
-    </div>
-
-    <div class="ayam-list">
-        <h2>Daftar Data Ayam</h2>
-        @foreach ($ayams as $ayam)
-            <div class="post">
-                <h3>{{ $ayam->kategori_ayam }}</h3>
-                <p>Harga: Rp {{ number_format($ayam->harga_ayam, 0, ',', '.') }}/kg</p>
-                <p>Stok: {{ $ayam->stok_ayam }} ekor</p>
-                <p>Kandang: {{ $ayam->nama_kandang }}</p>
-                <p>Tanggal Ditambahkan: {{ \Carbon\Carbon::parse($ayam->created_at)->format('d-m-Y') }}</p>
-                <div class="post-actions">
-                    <a href="/edit-ayam/{{ $ayam->id }}">Edit</a>
-                    <form action="/delete-ayam/{{ $ayam->id }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Hapus</button>
-                    </form>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <style>
         .back-button a {
-            background-color: #f6a600; /* Sama dengan tombol simpan data */
+            background-color: #f6a600;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -106,13 +93,60 @@
         }
 
         .back-button a:hover {
-            background-color: #db9b00; /* Sama dengan tombol simpan data */
+            background-color: #db9b00;
             transform: scale(1.05);
         }
     </style>
+    <script>
+        function toggleDetails(id) {
+            const post = document.getElementById(id);
+            const allPosts = document.querySelectorAll('.post');
+            allPosts.forEach(post => {
+                if (post !== document.getElementById(id)) {
+                    post.style.display = 'none'; // Hide all other posts
+                }
+            });
+            // Toggle the selected post visibility
+            if (post.style.display === 'none' || post.style.display === '') {
+                post.style.display = 'block';
+            } else {
+                post.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Data Ayam</h1>
+    </div>
+
+    <div class="ayam-list">
+        <h2>Daftar Kategori Ayam</h2>
+        @foreach ($ayams as $ayam)
+            <div class="category" onclick="toggleDetails('post-{{ $ayam->id }}')">
+                {{ $ayam->kategori_ayam }}
+            </div>
+            <div id="post-{{ $ayam->id }}" class="post" style="display: none;">
+                <p>Harga: Rp {{ number_format($ayam->harga_ayam, 0, ',', '.') }}/kg</p>
+                <p>Stok: {{ $ayam->stok_ayam }} ekor</p>
+                <p>Tanggal Ditambahkan: {{ \Carbon\Carbon::parse($ayam->created_at)->format('d-m-Y') }}</p>
+                <div class="kandang">
+                    Kandang: {{ $ayam->nama_kandang }}
+                </div>
+                <div class="post-actions">
+                    <a href="/edit-ayam/{{ $ayam->id }}">Edit</a>
+                    <form action="/delete-ayam/{{ $ayam->id }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Hapus</button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
     <div class="back-button">
         <a href="/ayam">Kembali ke Halaman Ayam</a>
+    </div>
 </body>
 </html>
-

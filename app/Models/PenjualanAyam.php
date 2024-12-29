@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PenjualanAyam extends Model
 {
     use HasFactory;
+
+    // Nama tabel yang digunakan oleh model
     protected $table = 'penjualan_ayam';
-    protected $fillable = ['jumlah_penjualan', 'harga'];
+
+    // Daftar kolom yang dapat diisi secara massal
+    protected $fillable = ['jumlah_penjualan', 'harga', 'kategori_ayam', 'nama_kandang']; // Menambahkan kategori_ayam dan nama_kandang
 }

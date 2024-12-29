@@ -65,6 +65,9 @@
     <div class="container">
         <form action="{{ route('update-penjualan-ayam', $penjualanAyam->id) }}" method="POST">
             @csrf
+            @method('PUT') <!-- Menggunakan metode PUT untuk pembaruan data -->
+
+            <!-- Input untuk jumlah penjualan -->
             <label for="jumlah_penjualan">Jumlah Penjualan:</label>
             <select name="jumlah_penjualan" id="jumlah_penjualan" required>
                 @for ($i = 1; $i <= 5000; $i++)
@@ -74,9 +77,19 @@
                 @endfor
             </select>
 
+            <!-- Input untuk harga -->
             <label for="harga">Harga:</label>
-            <input type="text" name="harga" id="harga" value="{{ $penjualanAyam->harga }}" required>
+            <input type="number" name="harga" id="harga" value="{{ $penjualanAyam->harga }}" required>
 
+            <!-- Input untuk kategori ayam -->
+            <label for="kategori_ayam">Kategori Ayam:</label>
+            <input type="text" name="kategori_ayam" id="kategori_ayam" value="{{ $penjualanAyam->kategori_ayam }}" required>
+
+            <!-- Input untuk nama kandang -->
+            <label for="nama_kandang">Nama Kandang:</label>
+            <input type="text" name="nama_kandang" id="nama_kandang" value="{{ $penjualanAyam->nama_kandang }}" required>
+
+            <!-- Tombol untuk menyimpan perubahan -->
             <button type="submit">Simpan Perubahan</button>
         </form>
     </div>

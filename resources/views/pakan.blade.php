@@ -6,191 +6,114 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Halaman Pakan</title>
     <style>
-        /* General styles */
+        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #fbe8a6, #f6a600);
+            background-color: #fbe8a6;
             margin: 0;
             padding: 0;
             color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
         }
 
         .header {
-            background: rgba(246, 166, 0, 0.9);
-            padding: 20px;
+            background-color: #f6a600;
+            padding: 15px 20px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            position: relative;
-            animation: slideDown 0.5s ease;
-            z-index: 1;
-        }
-
-        @keyframes slideDown {
-            0% { transform: translateY(-20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .header h1 {
-            color: #fff;
+            color: #ffffff;
             margin: 0;
-            font-size: 36px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-size: 28px;
+        }
+
+        .nav-links {
+            margin-top: 10px;
         }
 
         .nav-links a {
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
             margin: 0 15px;
-            padding: 10px 15px;
+            padding: 5px 10px;
             border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s;
-            font-size: 18px;
-            background-color: rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
         }
 
         .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-            transform: scale(1.1);
-        }
-
-        .button-pakan-baru {
-            color: #fff;
-            background-color: #f6a600;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .button-pakan-baru:hover {
             background-color: #db9b00;
-            transform: scale(1.05);
         }
 
         .post-container {
             max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.5s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         h2 {
             color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f6a600;
+            padding-bottom: 5px;
             text-align: center;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            font-size: 28px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 3px solid #f6a600;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 30px;
-        }
-
-        label {
-            font-size: 18px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="number"], select {
-            padding: 15px;
-            margin: 10px 0;
+        form select,
+        form button,
+        form input[type="number"] {
+            width: 100%;
+            padding: 10px;
             border-radius: 5px;
-            border: 2px solid #ccc;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
             font-size: 16px;
-            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        input[type="number"]:focus, select:focus {
-            border-color: #f6a600;
-            box-shadow: 0 0 5px rgba(246, 166, 0, 0.5);
-            outline: none;
-        }
-
-        button {
+        form button {
             background-color: #f6a600;
             color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #db9b00;
+        }
+
+        .success-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
             border: none;
-            padding: 15px;
-            margin-top: 20px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s, transform 0.2s;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
         }
 
-        button:hover {
-            background-color: #db9b00;
-            transform: scale(1.05);
-            animation: pulse 0.6s infinite alternate;
+        .success-btn:hover {
+            background-color: #218838;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        /* Tombol tambah merk pakan baru */
         .add-button {
             background-color: #f6a600;
             color: white;
             border: none;
-            padding: 10px 10px; /* Ubah padding untuk memperkecil tombol */
-            margin-left: 10px; /* Jarak antara input dan tombol */
+            padding: 10px 10px;
+            margin-left: 10px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 14px; /* Ukuran font lebih kecil */
+            font-size: 14px;
             transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .add-button:hover {
             background-color: #db9b00;
             transform: scale(1.05);
         }
-
-        /* Responsive Styles */
-        @media (max-width: 600px) {
-            .post-container {
-                padding: 20px;
-            }
-
-            h2 {
-                font-size: 24px;
-            }
-
-            button, .post-actions a, .post-actions form button {
-                font-size: 14px;
-                padding: 10px;
-            }
-
-            input[type="number"], select {
-                font-size: 14px;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -204,10 +127,21 @@
     </div>
 
     <div class="post-container">
-        <h2>DATA PAKAN</h2>
+        <h2>Tambah Data Pakan</h2>
+        
+        <!-- Display success message if session success exists -->
+        @if(session('success'))
+            <div style="text-align: center; margin-bottom: 15px;">
+                <button
+                    class="success-btn"
+                    onclick="window.location.href='/pakanbaru'">
+                    Data Pakan Tersimpan - Klik untuk Melihat
+                </button>
+            </div>
+        @endif
+        
         <form action="/pakanbaru" method="POST">
             @csrf
-            <label for="pakan">Merk Pakan:</label>
             <select name="pakan" id="pakan" required>
                 <option value="">Pilih Merk Pakan</option>
                 <option value="Japfa Comfeed">Japfa Comfeed</option>
@@ -232,7 +166,7 @@
                 <option value="Greenfields Feed">Greenfields Feed</option>
             </select>
 
-            <!-- Input untuk menambahkan merk pakan baru -->
+            <!-- Input for adding new merk pakan -->
             <div>
                 <label for="new-pakan">Tambah Merk Pakan Baru:</label>
                 <input type="text" id="new-pakan" placeholder="Nama merk pakan baru">
@@ -250,7 +184,7 @@
             </select>
 
             <button type="submit">Simpan Data</button>
-            <!-- Tombol Pakan Baru -->
+            <!-- Button to view saved pakan data -->
             <a href="/pakanbaru" class="button-pakan-baru">Data Pakan Tersimpan</a>
         </form>
     </div>

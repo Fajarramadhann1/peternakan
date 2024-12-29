@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('penjualan_ayam', function (Blueprint $table) {
             $table->id();
+            $table->string('kategori_ayam'); // Menambahkan kolom kategori ayam
+            $table->string('nama_kandang'); // Menambahkan kolom nama kandang
             $table->integer('jumlah_penjualan');
             $table->integer('harga');
             $table->timestamps();
         });
-        
-        
     }
     
     public function down(): void

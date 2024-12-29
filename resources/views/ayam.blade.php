@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tambah Data Ayam</title>
+    <title>Halaman Ayam</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -25,6 +25,23 @@
             color: #ffffff;
             margin: 0;
             font-size: 28px;
+        }
+
+        .nav-links {
+            margin-top: 10px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: #db9b00;
         }
 
         .post-container {
@@ -81,7 +98,12 @@
 </head>
 <body>
     <div class="header">
-        <h1>Tambah Data Ayam</h1>
+        <h1>Halaman Ayam</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/pakan">Pakan</a>
+            <a href="/penjualan">Penjualan</a>
+        </div>
     </div>
 
     <div class="post-container">
@@ -106,7 +128,6 @@
                 <option value="Ayam Besar">Ayam Besar</option>
             </select>
         
-            <!-- Input teks untuk harga ayam -->
             <input 
                 type="text" 
                 name="harga_ayam" 
@@ -117,7 +138,6 @@
                 style="width: 100%; padding: 10px; border-radius: 5px; margin-bottom: 10px; border: 1px solid #ccc; font-size: 16px;"
             >
         
-            <!-- Input teks untuk stok ayam -->
             <input 
                 type="text" 
                 name="stok_ayam" 

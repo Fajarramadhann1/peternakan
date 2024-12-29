@@ -124,6 +124,12 @@
             <label for="harga">Harga:</label>
             <input type="number" name="harga" id="harga" placeholder="Masukkan harga..." required>
 
+            <label for="kategori_ayam">Kategori Ayam:</label>
+            <input type="text" name="kategori_ayam" id="kategori_ayam" placeholder="Masukkan kategori ayam..." required>
+
+            <label for="nama_kandang">Nama Kandang:</label>
+            <input type="text" name="nama_kandang" id="nama_kandang" placeholder="Masukkan nama kandang..." required>
+
             <button type="submit">Tambah Penjualan Ayam</button>
         </form>
 
@@ -132,6 +138,8 @@
             <h3>Data Penjualan Ayam</h3>
             @foreach ($penjualanAyam as $ayam)
             <div class="data-item">
+                <p>Kategori Ayam: {{ $ayam->kategori_ayam }}</p>
+                <p>Nama Kandang: {{ $ayam->nama_kandang }}</p>
                 <p>Jumlah: {{ $ayam->jumlah_penjualan }}</p>
                 <p>Harga: Rp{{ number_format($ayam->harga, 0, ',', '.') }}</p>
                 <div>
