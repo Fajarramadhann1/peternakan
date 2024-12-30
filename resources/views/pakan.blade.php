@@ -114,6 +114,23 @@
             background-color: #db9b00;
             transform: scale(1.05);
         }
+
+        .button-pakan-baru {
+            display: inline-block;
+            background-color: #f6a600;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button-pakan-baru:hover {
+            background-color: #db9b00;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -128,18 +145,19 @@
 
     <div class="post-container">
         <h2>Tambah Data Pakan</h2>
-        
+
         <!-- Display success message if session success exists -->
         @if(session('success'))
             <div style="text-align: center; margin-bottom: 15px;">
-                <button
-                    class="success-btn"
-                    onclick="window.location.href='/pakanbaru'">
-                    Data Pakan Tersimpan - Klik untuk Melihat
-                </button>
+                <a
+                    href="/pakanbaru"
+                    class="button-pakan-baru"
+                    style="display: inline-block; text-align: center; text-decoration: none;">
+                    Data Pakan Tersimpan
+                </a>
             </div>
         @endif
-        
+
         <form action="/pakanbaru" method="POST">
             @csrf
             <select name="pakan" id="pakan" required>
