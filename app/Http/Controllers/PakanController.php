@@ -17,22 +17,34 @@ class PakanController extends Controller
     // Menambahkan post baru
     public function createPakan(Request $request)
     {
+        // Validasi input dari pengguna
         $incomingField = $request->validate([
             'pakan' => 'required|string',
             'stok' => 'required|integer|min:1|max:100',
             'harga' => 'required|integer|max:500000',
         ]);
-
-        // dd($request->all());
-
-        Pakan::create([
-                'pakan' => $request->pakan, // Nama pakan
-                'stok' => $request->stok,   // Jumlah stok
-                'harga' => $request->harga, // Harga pakan
-        ]);
-
-        return redirect('/pakanbaru'); // Mengarahkan setelah menyimpan data
+    
+        // Cari pakan berdasarkan nama
+        $existingPakan = Pakan::where('pakan', $request->pakan)->first();
+    
+        if ($existingPakan) {
+            // Jika nama pakan sudah ada, update stok dengan menambahkan stok baru
+            $existingPakan->update([
+                'stok' => $existingPakan->stok + $request->stok,
+            ]);
+        } else {
+            // Jika nama pakan belum ada, buat entri baru
+            Pakan::create([
+                'pakan' => $request->pakan,
+                'stok' => $request->stok,
+                'harga' => $request->harga,
+            ]);
+        }
+    
+        // Redirect setelah selesai
+        return redirect('/pakanbaru')->with('success', 'Data pakan berhasil disimpan atau diperbarui.');
     }
+    
 
     // Mengupdate post yang ada
     public function actuallyUpdatePakan(Pakan $pakan, Request $request)
