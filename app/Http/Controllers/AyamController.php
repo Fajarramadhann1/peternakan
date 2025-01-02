@@ -70,7 +70,7 @@ class AyamController extends Controller
     }
     
 
-        // Tambahkan method untuk halaman ayambaru
+        // Tambahkan method untuk halaman ayambaru agar mengelompokkan data berdasarkan data kategori kandang
     public function indexAyamBaru() {
         $ayams = Ayam::all();
 $kandangs = $ayams->groupBy('nama_kandang'); // Kelompokkan berdasarkan nama kandang

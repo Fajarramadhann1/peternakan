@@ -122,10 +122,7 @@ class PenjualanAyamController extends Controller
     }
 
 
-
-
-
-
+    //Integrasi untuk mengirim Whatsapp
     public function sendToWhatsapp($penjualanAyam)
     {
         // Ambil data pesanan berdasarkan pesanan ID
