@@ -152,6 +152,9 @@
                 <option value="">Pilih Nama Kandang</option>
                 <option value="Kandang A">Kandang A</option>
                 <option value="Kandang B">Kandang B</option>
+                <option value="Kandang C">Kandang C</option>
+                <option value="Kandang D">Kandang D</option>
+
             </select>
         
             <button type="submit">Simpan Data</button>

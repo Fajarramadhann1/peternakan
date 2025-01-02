@@ -14,6 +14,7 @@ class PakanController extends Controller
         return view('pakan', ['pakan' => $pakan]);
     }
 
+    
     // Menambahkan post baru
     public function createPakan(Request $request)
     {
@@ -46,23 +47,27 @@ class PakanController extends Controller
     }
     
 
+
     // Mengupdate post yang ada
-    public function actuallyUpdatePakan(Pakan $pakan, Request $request)
-    {
+    public function actuallyUpdatePakan(Pakan $pakan, Request $request) {
         $incomingField = $request->validate([
             'pakan' => 'required|string',
-            'stok' => 'required|integer|min:1|max:100',
-            'harga' => 'required|integer|min:1000|max:500000',
+            'stok' => 'required|numeric|min:1|max:100',
+            'harga' => 'required|numeric|min:1000|max:500000',
         ]);
-
-        $pakan->update([
-            'pakan' => $incomingField['pakan'],
-            'stok' => $incomingField['stok'],
-            'harga' => $incomingField['harga'],
-        ]);
-
-        return redirect('/pakan');
+    
+        // Sanitasi input data untuk mencegah XSS
+        $incomingField['pakan'] = strip_tags($incomingField['pakan']);
+        $incomingField['stok'] = strip_tags($incomingField['stok']);
+        $incomingField['harga'] = strip_tags($incomingField['harga']);
+    
+        // Update data pakan
+        $pakan->update($incomingField);
+    
+        return redirect('/pakan')->with('success', 'Data pakan berhasil diperbarui.');
     }
+    
+
 
     public function deletePakan(Pakan $pakan)
     {
@@ -80,6 +85,6 @@ class PakanController extends Controller
     public function pakanBaru()
     {
         $pakans = Pakan::all(); // Ambil semua data pakan
-        return view('pakanbaru', ['pakans' => $pakans]); // Pastikan variabel dikirim ke view
+        return view('pakanbaru', ['pakan' => $pakans]); // Pastikan variabel dikirim ke view
     }
 }

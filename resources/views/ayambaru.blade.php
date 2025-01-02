@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Data Ayam</title>
     <style>
+        /* Styles tetap sama seperti versi sebelumnya */
         body {
             font-family: 'Arial', sans-serif;
             background-color: #fbe8a6;
@@ -48,10 +49,19 @@
             border-radius: 8px;
             color: white;
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .category:hover {
             background-color: #db9b00;
+        }
+
+        .category .kandang-info {
+            font-size: 14px;
+            font-style: italic;
+            color: #fff8e8;
         }
 
         .post {
@@ -67,7 +77,6 @@
             font-size: 16px;
         }
 
-        /* Kandang section always visible */
         .kandang {
             background-color: #e0e0e0;
             padding: 10px;
@@ -76,10 +85,42 @@
             font-weight: bold;
         }
 
-        .post-actions {
+        .button-group {
+            display: flex;
+            gap: 10px;
             margin-top: 10px;
         }
 
+        .button-group button,
+        .button-group a {
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            color: #ffffff;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button-group .edit-button {
+            background-color: #999999;
+        }
+
+        .button-group .edit-button:hover {
+            background-color: #747474;
+            transform: scale(1.05);
+        }
+
+        .button-group .delete-button {
+            background-color: #f44336;
+        }
+
+        .button-group .delete-button:hover {
+            background-color: #e53935;
+            transform: scale(1.05);
+        }
         .back-button a {
             background-color: #f6a600;
             color: white;
@@ -91,7 +132,6 @@
             text-align: center;
             transition: background-color 0.3s, transform 0.2s;
         }
-
         .back-button a:hover {
             background-color: #db9b00;
             transform: scale(1.05);
@@ -103,10 +143,9 @@
             const allPosts = document.querySelectorAll('.post');
             allPosts.forEach(post => {
                 if (post !== document.getElementById(id)) {
-                    post.style.display = 'none'; // Hide all other posts
+                    post.style.display = 'none';
                 }
             });
-            // Toggle the selected post visibility
             if (post.style.display === 'none' || post.style.display === '') {
                 post.style.display = 'block';
             } else {
@@ -122,25 +161,33 @@
 
     <div class="ayam-list">
         <h2>Daftar Kategori Ayam</h2>
-        @foreach ($ayams as $ayam)
-            <div class="category" onclick="toggleDetails('post-{{ $ayam->id }}')">
-                {{ $ayam->kategori_ayam }}
-            </div>
-            <div id="post-{{ $ayam->id }}" class="post" style="display: none;">
-                <p>Harga: Rp {{ number_format($ayam->harga_ayam, 0, ',', '.') }}/kg</p>
-                <p>Stok: {{ $ayam->stok_ayam }} ekor</p>
-                <p>Tanggal Ditambahkan: {{ \Carbon\Carbon::parse($ayam->created_at)->format('d-m-Y') }}</p>
-                <div class="kandang">
-                    Kandang: {{ $ayam->nama_kandang }}
-                </div>
-                <div class="post-actions">
-                    <a href="/edit-ayam/{{ $ayam->id }}">Edit</a>
-                    <form action="/delete-ayam/{{ $ayam->id }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Hapus</button>
-                    </form>
-                </div>
+        @foreach ($kandangs as $kandang => $ayamsByKandang)
+            <div class="kandang">
+                <h3>Kandang: {{ $kandang }}</h3>
+                @php
+                    $sortedAyams = $ayamsByKandang->sortBy(function($ayam) {
+                        return ['Ayam Kecil' => 1, 'Ayam Sedang' => 2, 'Ayam Besar' => 3][$ayam->kategori_ayam] ?? 4;
+                    });
+                @endphp
+                @foreach ($sortedAyams as $ayam)
+                    <div class="category" onclick="toggleDetails('post-{{ $ayam->id }}')">
+                        <span>{{ $ayam->kategori_ayam }}</span>
+                        <span class="kandang-info">Stok: {{ $ayam->stok_ayam }} ekor</span>
+                    </div>
+                    <div id="post-{{ $ayam->id }}" class="post" style="display: none;">
+                        <p>Harga: Rp {{ number_format($ayam->harga_ayam, 0, ',', '.') }}/kg</p>
+                        <p>Stok: {{ $ayam->stok_ayam }} ekor</p>
+                        <p>Tanggal Ditambahkan: {{ \Carbon\Carbon::parse($ayam->created_at)->format('d-m-Y') }}</p>
+                        <div class="button-group">
+                            <a href="/edit-ayam/{{ $ayam->id }}" class="edit-button">Edit</a>
+                            <form action="/delete-ayam/{{ $ayam->id }}" method="POST" style="margin: 0;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete-button">Hapus</button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         @endforeach
     </div>

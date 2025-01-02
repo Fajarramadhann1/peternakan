@@ -9,7 +9,7 @@ class AyamController extends Controller
 {
     public function deleteAyam(Ayam $ayam) {
         $ayam->delete();
-        return redirect('/ayam');
+        return redirect('/ayambaru');
     }
 
     // Method untuk mengupdate data ayam
@@ -66,16 +66,14 @@ class AyamController extends Controller
             Ayam::create($incomingField);
         }
     
-        return redirect('/ayam');
+        return redirect('/ayambaru');
     }
     
 
-    // Tambahkan method untuk halaman ayambaru
+        // Tambahkan method untuk halaman ayambaru
     public function indexAyamBaru() {
-        // Ambil data ayam dari database
         $ayams = Ayam::all();
-
-        // Kirim data ke view ayambaru.blade.php
-        return view('ayambaru', compact('ayams'));
+$kandangs = $ayams->groupBy('nama_kandang'); // Kelompokkan berdasarkan nama kandang
+return view('ayambaru', compact('kandangs'));
     }
 }

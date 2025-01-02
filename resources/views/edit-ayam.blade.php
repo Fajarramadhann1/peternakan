@@ -7,89 +7,100 @@
     <title>Edit Data Ayam</title>
     <style>
         body {
-            font-family: 'Verdana', sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #fbe8a6;
             margin: 0;
             padding: 0;
-            color: #444;
+            color: #333;
         }
 
         .header {
-            background-color: #8b4513;
-            padding: 20px;
+            background-color: #f6a600;
+            padding: 15px 20px;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .header h1 {
             color: white;
             margin: 0;
             font-size: 28px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #a0522d;
-            margin: 30px 0;
-            font-size: 32px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .edit-container {
             max-width: 600px;
             margin: 20px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-            transition: box-shadow 0.3s;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .edit-container:hover {
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+        .edit-container h2 {
+            text-align: center;
+            color: #f6a600;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
 
         form {
             display: grid;
             grid-template-columns: 1fr;
-            grid-gap: 15px;
+            gap: 15px;
         }
 
         label {
             font-weight: bold;
-            margin-bottom: 5px;
-            color: #a0522d;
+            color: #333;
         }
 
-        select, 
+        select,
         button {
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
             border: 2px solid #ccc;
             font-size: 16px;
-            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        select:focus,
-        button:focus {
-            border-color: #a0522d;
+        select:focus {
+            border-color: #f6a600;
             outline: none;
-            box-shadow: 0 0 8px rgba(160, 82, 45, 0.4);
         }
 
         button {
-            background-color: #8b4513;
+            background-color: #f6a600;
             color: white;
+            border: none;
             cursor: pointer;
-            text-transform: uppercase;
+            font-size: 16px;
             font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         button:hover {
-            background-color: #a0522d;
-            transform: translateY(-3px);
+            background-color: #db9b00;
+            transform: scale(1.05);
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button a {
+            background-color: #f6a600;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .back-button a:hover {
+            background-color: #db9b00;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -98,14 +109,12 @@
         <h1>Edit Data Ayam</h1>
     </div>
 
-    <h1>Edit Data Ayam</h1>
-
     <div class="edit-container">
+        <h2>Edit Informasi Ayam</h2>
         <form action="/edit-ayam/{{ $ayam->id }}" method="POST">
             @csrf
             @method('PUT')
 
-            <!-- Dropdown for Kategori Ayam -->
             <label for="kategori_ayam">Kategori Ayam</label>
             <select id="kategori_ayam" name="kategori_ayam" required>
                 <option value="Ayam Kecil" {{ $ayam->kategori_ayam == 'Ayam Kecil' ? 'selected' : '' }}>Ayam Kecil</option>
@@ -113,7 +122,6 @@
                 <option value="Ayam Besar" {{ $ayam->kategori_ayam == 'Ayam Besar' ? 'selected' : '' }}>Ayam Besar</option>
             </select>
 
-            <!-- Dropdown for Harga Ayam -->
             <label for="harga_ayam">Harga Ayam (per kg)</label>
             <select id="harga_ayam" name="harga_ayam" required>
                 @for ($i = 18000; $i <= 30000; $i += 1000)
@@ -121,7 +129,6 @@
                 @endfor
             </select>
 
-            <!-- Dropdown for Stok Ayam -->
             <label for="stok_ayam">Stok Ayam (ekor)</label>
             <select id="stok_ayam" name="stok_ayam" required>
                 <option value="0" {{ $ayam->stok_ayam == 0 ? 'selected' : '' }}>Stok Habis</option>
@@ -130,7 +137,6 @@
                 @endfor
             </select>
 
-            <!-- Dropdown for Nama Kandang -->
             <label for="nama_kandang">Nama Kandang</label>
             <select id="nama_kandang" name="nama_kandang" required>
                 <option value="Kandang A" {{ $ayam->nama_kandang == 'Kandang A' ? 'selected' : '' }}>Kandang A</option>
@@ -142,6 +148,10 @@
 
             <button type="submit">Save Changes</button>
         </form>
+    </div>
+
+    <div class="back-button">
+        <a href="/ayam">Kembali ke Halaman Ayam</a>
     </div>
 </body>
 </html>

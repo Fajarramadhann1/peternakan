@@ -45,8 +45,8 @@ Route::delete('/delete-penjualan/{penjualan}', [PenjualanController::class, 'del
 // Pakan routes
 Route::get('/pakan', function () {
     $pakans = Pakan::all();
-    return view('pakan', ['pakan' => $pakans]);
-});
+    return view('pakan', ['pakans' => $pakans]);});
+    
 Route::post('/pakanbaru', [PakanController::class, 'createPakan']);
 Route::get('/edit-pakan/{pakan}', [PakanController::class, 'showEditScreen']);
 Route::put('/edit-pakan/{pakan}', [PakanController::class, 'actuallyUpdatePakan']);
@@ -74,7 +74,7 @@ Route::get('/penjualan-ayam', [PenjualanAyamController::class, 'index']);
 Route::post('/create-penjualan-ayam', [PenjualanAyamController::class, 'store']);
 Route::delete('/delete-penjualan-ayam/{id}', [PenjualanAyamController::class, 'destroy']);
 Route::get('/edit-penjualan-ayam/{id}', [PenjualanAyamController::class, 'edit'])->name('edit-penjualan-ayam');
-Route::post('/update-penjualan-ayam/{id}', [PenjualanAyamController::class, 'update'])->name('update-penjualan-ayam');
+Route::put('/update-penjualan-ayam/{id}', [PenjualanAyamController::class, 'update'])->name('update-penjualan-ayam');
 
 // Penjualan Pakan routes
 Route::get('/penjualan-pakan', [PenjualanPakanController::class, 'index']);
@@ -91,3 +91,7 @@ Route::get('/tpk', [TPKController::class, 'index'])->name('tpk.index'); // Route
 Route::get('/back-to-welcome', function () {
     return redirect()->route('welcome');
 });
+
+// integrasi
+Route::get('/penjualan/send-to-whatsapp/{penjualan_id}', [PenjualanAyamController::class, 'sendToWhatsapp'])->name('penjualan.sendToWhatsapp');
+

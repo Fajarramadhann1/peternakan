@@ -13,5 +13,12 @@ class PenjualanAyam extends Model
     protected $table = 'penjualan_ayam';
 
     // Daftar kolom yang dapat diisi secara massal
-    protected $fillable = ['jumlah_penjualan', 'harga', 'kategori_ayam', 'nama_kandang']; // Menambahkan kategori_ayam dan nama_kandang
+    protected $fillable = [
+        'jumlah_penjualan',
+        'harga',
+        'kategori_ayam',
+        'nama_kandang',
+        'nama_pelanggan',
+        'nomor_hp',
+    ]; 
 }

@@ -69,25 +69,25 @@
 
             <!-- Input untuk jumlah penjualan -->
             <label for="jumlah_penjualan">Jumlah Penjualan:</label>
-            <select name="jumlah_penjualan" id="jumlah_penjualan" required>
-                @for ($i = 1; $i <= 5000; $i++)
-                    <option value="{{ $i }}" {{ $penjualanAyam->jumlah_penjualan == $i ? 'selected' : '' }}>
-                        {{ $i }}
-                    </option>
-                @endfor
-            </select>
+            <input type="number" name="jumlah_penjualan" id="jumlah_penjualan" value="{{ $penjualanAyam->jumlah_penjualan }}" required>
+
 
             <!-- Input untuk harga -->
-            <label for="harga">Harga:</label>
-            <input type="number" name="harga" id="harga" value="{{ $penjualanAyam->harga }}" required>
+            <label for="nama_pelanggan">Nama Pelanggan: </label>
+            <input type="text" name="nama_pelanggan" id="nama_pelanggan" value="{{ $penjualanAyam->nama_pelanggan }}" required>
 
-            <!-- Input untuk kategori ayam -->
-            <label for="kategori_ayam">Kategori Ayam:</label>
-            <input type="text" name="kategori_ayam" id="kategori_ayam" value="{{ $penjualanAyam->kategori_ayam }}" required>
+            <!-- Input untuk harga -->
+            <label for="id_ayam">Data Ayam: {{ $penjualanAyam->kategori_ayam }}, {{ $penjualanAyam->harga }}, {{ $penjualanAyam->nama_kandang }}</label>
+            <select name="id_ayam" id="id_ayam" required>
+                <option value="">Pilih Kategori</option>
+                @foreach ($ayam as $ayams)
+                    <option value="{{ $ayams->id }}">{{ $ayams->kategori_ayam }}, {{ $ayams->harga_ayam }}, {{ $ayams->nama_kandang }},{{ $ayams->stok_ayam }}</option>
+                @endforeach
+            </select>
 
-            <!-- Input untuk nama kandang -->
-            <label for="nama_kandang">Nama Kandang:</label>
-            <input type="text" name="nama_kandang" id="nama_kandang" value="{{ $penjualanAyam->nama_kandang }}" required>
+            <!-- Input untuk nomor HP pelanggan -->
+            <label for="nomor_hp">Nomor HP Pelanggan:</label>
+            <input type="text" name="nomor_hp" id="nomor_hp" value="{{ $penjualanAyam->nomor_hp ?? '' }}" required>
 
             <!-- Tombol untuk menyimpan perubahan -->
             <button type="submit">Simpan Perubahan</button>
