@@ -29,7 +29,7 @@ class AyamController extends Controller
 
         // Update data ayam
         $ayam->update($incomingField);
-        return redirect('/ayam');
+        return redirect('/ayambaru');
     }
 
     // Method untuk menampilkan halaman edit ayam

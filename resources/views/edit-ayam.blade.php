@@ -129,14 +129,16 @@
                 @endfor
             </select>
 
-            <label for="stok_ayam">Stok Ayam (ekor)</label>
-            <select id="stok_ayam" name="stok_ayam" required>
-                <option value="0" {{ $ayam->stok_ayam == 0 ? 'selected' : '' }}>Stok Habis</option>
-                @for ($i = 1; $i <= 5000; $i += 500)
-                    <option value="{{ $i }}" {{ $ayam->stok_ayam == $i ? 'selected' : '' }}>{{ $i }} ekor</option>
-                @endfor
-            </select>
-
+            <label for="stok_ayam">Stok Ayam </label>
+            <input 
+            type="text" 
+            name="stok_ayam" 
+            placeholder="Masukkan Stok Ayam (contoh: 1000)" 
+            required 
+            pattern="\d+" 
+            title="Masukkan hanya angka tanpa simbol atau spasi" 
+            style="width: 100%; padding: 10px; border-radius: 5px; margin-bottom: 10px; border: 1px solid #ccc; font-size: 16px;"
+        >
             <label for="nama_kandang">Nama Kandang</label>
             <select id="nama_kandang" name="nama_kandang" required>
                 <option value="Kandang A" {{ $ayam->nama_kandang == 'Kandang A' ? 'selected' : '' }}>Kandang A</option>
