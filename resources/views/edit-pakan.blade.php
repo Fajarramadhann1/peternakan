@@ -152,10 +152,10 @@
         <form action="/edit-pakan/{{ $pakan->id }}" method="POST">
             @csrf
             @method('PUT')
-
+    
             <!-- Dropdown untuk memilih merk pakan -->
             <label for="pakan">Merk Pakan:</label>
-            <select name="stok" id="pakan" required>
+            <select name="pakan" id="pakan" required>
                 <option value="Japfa Comfeed" {{ $pakan->pakan == 'Japfa Comfeed' ? 'selected' : '' }}>Japfa Comfeed</option>
                 <option value="Charoen Pokphand" {{ $pakan->pakan == 'Charoen Pokphand' ? 'selected' : '' }}>Charoen Pokphand</option>
                 <option value="Malindo Feedmill" {{ $pakan->pakan == 'Malindo Feedmill' ? 'selected' : '' }}>Malindo Feedmill</option>
@@ -177,16 +177,16 @@
                 <option value="JGofeed" {{ $pakan->pakan == 'JGofeed' ? 'selected' : '' }}>JGofeed</option>
                 <option value="Greenfields Feed" {{ $pakan->pakan == 'Greenfields Feed' ? 'selected' : '' }}>Greenfields Feed</option>
             </select>
-
+    
             <!-- Tambahkan Merk Pakan Baru -->
             <label for="new-pakan">Tambah Merk Pakan Baru:</label>
             <input type="text" id="new-pakan" placeholder="Nama merk pakan baru">
             <button type="button" class="add-button" onclick="addNewPakan()">Tambah Merk</button>
-
+    
             <!-- Form untuk mengedit stok -->
             <label for="stok">Stok Pakan:</label>
             <input type="number" name="stok" id="stok" min="1" max="100" value="{{ preg_replace('/[^0-9]/', '', $pakan->stok) }}" required placeholder="Tambahkan stok (1-100)">
-
+    
             <!-- Dropdown untuk mengedit harga pakan -->
             <label for="harga">Harga Pakan:</label>
             <select name="harga" id="harga" required>
@@ -194,36 +194,79 @@
                     <option value="{{ $i }}" {{ $pakan->harga == $i ? 'selected' : '' }}>Rp {{ number_format($i, 0, ',', '.') }}</option>
                 @endfor
             </select>
-
+    
             <button type="submit">Simpan Perubahan</button>
         </form>
     </div>
-
+    
     <script>
         function addNewPakan() {
             const newPakan = document.getElementById('new-pakan').value.trim();
             const select = document.getElementById('pakan');
-
+    
             if (newPakan) {
-                // Cek jika merk sudah ada
                 for (let option of select.options) {
                     if (option.value.toLowerCase() === newPakan.toLowerCase()) {
                         alert('Merk pakan ini sudah ada!');
                         return;
                     }
                 }
-
-                // Tambah merk baru
+    
                 const option = document.createElement('option');
                 option.value = newPakan;
                 option.textContent = newPakan;
                 select.appendChild(option);
-                select.value = newPakan; // Pilih merk baru
-                document.getElementById('new-pakan').value = ''; // Reset input
+                select.value = newPakan;
+                document.getElementById('new-pakan').value = '';
             } else {
                 alert('Silakan masukkan nama merk pakan baru');
             }
         }
-    </script>
+    
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+    
+            const oldValues = {
+                pakan: "{{ $pakan->pakan }}",
+                stok: "{{ preg_replace('/[^0-9]/', '', $pakan->stok) }}",
+                harga: "{{ $pakan->harga }}"
+            };
+    
+            const form = e.target;
+            const newValues = {
+                pakan: form.pakan.value,
+                stok: form.stok.value,
+                harga: form.harga.value
+            };
+    
+            const formData = new FormData();
+            formData.append('_method', 'PUT');
+            formData.append('_token', '{{ csrf_token() }}');
+    
+            for (const key in newValues) {
+                if (newValues[key] !== oldValues[key]) {
+                    formData.append(key, newValues[key]);
+                } else {
+                    formData.append(key, oldValues[key]);
+                }
+            }
+    
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = '/pakanbaru'; // Redirect ke halaman /pakan
+                } else {
+                    alert('Terjadi kesalahan saat memperbarui data.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Gagal mengirim data ke server.');
+            });
+        });
+    </script>    
 </body>
 </html>

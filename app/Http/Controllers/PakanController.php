@@ -50,6 +50,7 @@ class PakanController extends Controller
 
     // Mengupdate post yang ada
     public function actuallyUpdatePakan(Pakan $pakan, Request $request) {
+        // dd($request->all());
         $incomingField = $request->validate([
             'pakan' => 'required|string',
             'stok' => 'required|numeric|min:1|max:100',
@@ -64,7 +65,7 @@ class PakanController extends Controller
         // Update data pakan
         $pakan->update($incomingField);
     
-        return redirect('/pakan')->with('success', 'Data pakan berhasil diperbarui.');
+        return redirect('/pakanbaru')->with('success', 'Data pakan berhasil diperbarui.');
     }
     
 

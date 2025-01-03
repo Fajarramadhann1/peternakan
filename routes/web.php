@@ -36,11 +36,6 @@ Route::get('/penjualan', function () {
     $penjualans = Penjualan::all();
     return view('penjualan', ['penjualans' => $penjualans]);
 });
-// PenjualanController routes
-Route::post('/create-penjualan', [PenjualanController::class,'createPenjualan']);
-Route::get('/edit-penjualan/{penjualan}',[PenjualanController::class, 'showEditScreen']);
-Route::put('/edit-penjualan/{penjualan}', [PenjualanController::class, 'actuallyUpdatePenjualan']);
-Route::delete('/delete-penjualan/{penjualan}', [PenjualanController::class, 'deletePenjualan']);
 
 // Pakan routes
 Route::get('/pakan', function () {
